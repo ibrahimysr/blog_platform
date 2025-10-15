@@ -15,7 +15,7 @@
 				<div class="font-semibold mb-3">Yönetim</div>
 				<ul class="space-y-2">
 					<li><a href="{{ route('admin.posts.index') }}">Yazılar</a></li>
-					<li><a href="#">Kategoriler</a></li>
+					<li><a href="{{ route('admin.categories.index') }}">Kategoriler</a></li>
 					<li><a href="#">Etkinlikler</a></li>
 				</ul>
 			</aside>

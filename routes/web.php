@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,6 @@ Route::prefix('admin')->as('admin.')->group(function () {
     Route::middleware(['auth','admin'])->group(function () {
         Route::get('/', function () { return view('admin.dashboard'); })->name('dashboard');
         Route::resource('posts', PostController::class);
+        Route::resource('categories', CategoryController::class)->except(['show']);
     });
 });
