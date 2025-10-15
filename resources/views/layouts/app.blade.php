@@ -61,7 +61,7 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Ana Sayfa</a>
-                    <a href="{{ route('admin.posts.index') }}" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Yazılar</a>
+                    <a href="{{ route('posts.list') }}" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Yazılar</a>
                     <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Kategoriler</a>
                     <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Etkinlikler</a>
                     <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Hakkında</a>
@@ -121,7 +121,7 @@
             <div id="mobile-menu" class="hidden md:hidden pb-4">
                 <div class="flex flex-col space-y-3">
                     <a href="/" class="text-gray-700 hover:text-blue-600 py-2">Ana Sayfa</a>
-                    <a href="{{ route('admin.posts.index') }}" class="text-gray-700 hover:text-blue-600 py-2">Yazılar</a>
+                    <a href="{{ route('posts.list') }}" class="text-gray-700 hover:text-blue-600 py-2">Yazılar</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Kategoriler</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Etkinlikler</a>
                     <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Hakkında</a>
