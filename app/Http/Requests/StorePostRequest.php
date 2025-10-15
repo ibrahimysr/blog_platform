@@ -23,7 +23,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|max:255|unique:posts,slug',
+            'slug' => 'required|string|max:255|unique:posts,slug,NULL,id',
             'excerpt' => 'nullable|string',
             'content' => 'required|string',
             'status' => 'nullable|integer|in:0,1,2',

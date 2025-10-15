@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', [LoginController::class, 'show'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
 Route::prefix('admin')->as('admin.')->group(function () {
-    Route::get('/', function () { return view('admin.dashboard'); })->name('dashboard');
-    Route::resource('posts', PostController::class);
+    Route::middleware(['auth','admin'])->group(function () {
+        Route::get('/', function () { return view('admin.dashboard'); })->name('dashboard');
+        Route::resource('posts', PostController::class);
+    });
 });

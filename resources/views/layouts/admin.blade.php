@@ -9,26 +9,10 @@
 	@yield('meta')
 </head>
 <body class="min-h-screen bg-white text-gray-900">
-	<nav class="bg-white border-b">
-		<div class="container mx-auto px-4 py-3 flex items-center justify-between">
-			<a href="{{ route('admin.dashboard') }}" class="font-semibold">Yönetim</a>
-			<div class="space-x-4">
-				<a href="{{ route('admin.posts.index') }}">Yazılar</a>
-				<a href="#">Kategoriler</a>
-				<a href="#">Etkinlikler</a>
-			</div>
-		</div>
-	</nav>
-	@if (session('status'))
-		<div class="container mx-auto px-4 py-2">
-			<div class="bg-green-50 text-green-800 px-4 py-2 rounded">
-				{{ session('status') }}
-			</div>
-		</div>
-	@endif
 	<div class="container mx-auto px-4 py-6">
 		<div class="grid grid-cols-12 gap-6">
 			<aside class="col-span-3">
+				<div class="font-semibold mb-3">Yönetim</div>
 				<ul class="space-y-2">
 					<li><a href="{{ route('admin.posts.index') }}">Yazılar</a></li>
 					<li><a href="#">Kategoriler</a></li>
@@ -36,6 +20,11 @@
 				</ul>
 			</aside>
 			<main class="col-span-9">
+				@if (session('status'))
+					<div class="bg-green-50 text-green-800 px-4 py-2 rounded mb-4">
+						{{ session('status') }}
+					</div>
+				@endif
 				@yield('content')
 			</main>
 		</div>

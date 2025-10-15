@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostMedia;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -30,8 +31,9 @@ class PostController extends Controller
     public function store(StorePostRequest $request): RedirectResponse
     {
         $data = $request->validated();
+        $userId = auth()->id() ?: User::query()->value('id');
         $post = Post::create([
-            'user_id' => auth()->id(),
+            'user_id' => $userId,
             'title' => $data['title'],
             'slug' => $data['slug'],
             'excerpt' => $data['excerpt'] ?? null,

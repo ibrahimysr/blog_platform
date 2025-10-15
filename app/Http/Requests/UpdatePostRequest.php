@@ -21,10 +21,11 @@ class UpdatePostRequest extends FormRequest
      */
     public function rules(): array
     {
-        $postId = $this->route('post');
+        $postParam = $this->route('post');
+        $postId = is_object($postParam) ? ($postParam->id ?? null) : $postParam;
         return [
             'title' => 'sometimes|required|string|max:255',
-            'slug' => 'sometimes|required|string|max:255|unique:posts,slug,' . $postId,
+            'slug' => 'sometimes|required|string|max:255|unique:posts,slug,' . ($postId ?? 'NULL') . ',id',
             'excerpt' => 'nullable|string',
             'content' => 'sometimes|required|string',
             'status' => 'nullable|integer|in:0,1,2',

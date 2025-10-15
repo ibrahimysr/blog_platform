@@ -33,5 +33,9 @@ class DatabaseSeeder extends Seeder
             'user_id' => $user->id,
             'role_id' => $adminRoleId,
         ], []);
+
+        $this->call([
+            CategorySeeder::class,
+        ]);
     }
 }
