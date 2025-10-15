@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Event;
+use App\Models\Post;
+use App\Models\PostViewStat;
+use Illuminate\Support\Carbon;
+use Illuminate\View\View;
+
+class HomeController extends Controller
+{
+    public function index(): View
+    {
+        $featuredPosts = Post::with(['media', 'categories'])
+            ->where('status', 1)
+            ->where('is_featured', true)
+            ->orderByDesc('published_at')
+            ->limit(3)
+            ->get();
+
+        $latestPosts = Post::with(['media', 'categories'])
+            ->where('status', 1)
+            ->orderByDesc('published_at')
+            ->limit(8)
+            ->get();
+
+        $sinceDate = now()->subDays(30)->toDateString();
+        $popularStats = PostViewStat::selectRaw('post_id, SUM(views) as total_views')
+            ->where('date', '>=', $sinceDate)
+            ->groupBy('post_id')
+            ->orderByDesc('total_views')
+            ->limit(5)
+            ->get();
+
+        $popularPostIds = $popularStats->pluck('post_id')->all();
+        $popularPostsMap = Post::with(['media', 'categories'])
+            ->whereIn('id', $popularPostIds)
+            ->get()
+            ->keyBy('id');
+        $popularPosts = collect($popularPostIds)
+            ->map(fn ($id) => $popularPostsMap->get($id))
+            ->filter()
+            ->values();
+
+        $topCategories = Category::withCount('posts')
+            ->orderByDesc('posts_count')
+            ->limit(5)
+            ->get();
+
+        $upcomingEvents = Event::where('event_date', '>=', now())
+            ->orderBy('event_date')
+            ->limit(3)
+            ->get();
+
+        $recentComments = Comment::with(['post'])
+            ->where('status', 1)
+            ->orderByDesc('id')
+            ->limit(5)
+            ->get();
+
+        return view('home.index', compact(
+            'featuredPosts',
+            'latestPosts',
+            'popularPosts',
+            'topCategories',
+            'upcomingEvents',
+            'recentComments'
+        ));
+    }
+}
