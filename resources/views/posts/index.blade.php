@@ -95,7 +95,7 @@
 					@php $img = $post->media->firstWhere('is_primary', true) ?: $post->media->first(); @endphp
 					<article class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all duration-300">
 						{{-- Image --}}
-						<a href="#" class="block relative h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
+						<a href="{{ route('posts.show', $post) }}" class="block relative h-48 overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50">
 							@if($img)
 								<img src="{{ $img->url }}" 
 								     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
@@ -122,7 +122,7 @@
 
 						{{-- Content --}}
 						<div class="p-5">
-							<a href="#" class="block">
+							<a href="{{ route('posts.show', $post) }}" class="block">
 								<h3 class="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors leading-tight">
 									{{ $post->title }}
 								</h3>

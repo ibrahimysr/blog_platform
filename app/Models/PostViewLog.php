@@ -9,6 +9,7 @@ class PostViewLog extends Model
 {
     use HasFactory;
 
+    protected $table = 'post_views_log';
     public $timestamps = false;
 
     protected $fillable = [
