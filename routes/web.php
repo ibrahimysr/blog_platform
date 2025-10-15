@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 
 /*
@@ -31,5 +32,6 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::resource('posts', PostController::class);
         Route::resource('categories', CategoryController::class)->except(['show']);
         Route::resource('events', EventController::class)->except(['show']);
+        Route::resource('users', UserController::class)->except(['show']);
     });
 });
