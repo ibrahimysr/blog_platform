@@ -9,6 +9,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsPageController;
 use App\Http\Controllers\PostDetailController;
+use App\Http\Controllers\EventsPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ use App\Http\Controllers\PostDetailController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/yazilar', [PostsPageController::class, 'index'])->name('posts.list');
 Route::get('/yazilar/{post:slug}', [PostDetailController::class, 'show'])->name('posts.show');
+Route::get('/etkinlikler', [EventsPageController::class, 'index'])->name('events.list');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');

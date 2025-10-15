@@ -62,9 +62,7 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="/" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Ana Sayfa</a>
                     <a href="{{ route('posts.list') }}" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Yazılar</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Kategoriler</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Etkinlikler</a>
-                    <a href="#" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Hakkında</a>
+                    <a href="{{ route('events.list') }}" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Etkinlikler</a>
                 </div>
 
                 <!-- User Menu / Auth -->
@@ -122,9 +120,7 @@
                 <div class="flex flex-col space-y-3">
                     <a href="/" class="text-gray-700 hover:text-blue-600 py-2">Ana Sayfa</a>
                     <a href="{{ route('posts.list') }}" class="text-gray-700 hover:text-blue-600 py-2">Yazılar</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Kategoriler</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Etkinlikler</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 py-2">Hakkında</a>
+                    <a href="{{ route('events.list') }}" class="text-gray-700 hover:text-blue-600 py-2">Etkinlikler</a>
                     @guest
                         <a href="{{ route('login') }}" class="text-gray-700 hover:text-blue-600 py-2">Giriş Yap</a>
                         <a href="{{ route('register') }}" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-center">Kayıt Ol</a>
@@ -216,7 +212,7 @@
                     <h3 class="font-semibold text-gray-900 mb-4">Hızlı Linkler</h3>
                     <ul class="space-y-2">
                         <li><a href="/" class="text-gray-600 hover:text-blue-600 transition-colors">Ana Sayfa</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Hakkımızda</a></li>
+                        
                         <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">İletişim</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-colors">Gizlilik Politikası</a></li>
                     </ul>
