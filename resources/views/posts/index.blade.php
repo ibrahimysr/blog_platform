@@ -132,21 +132,32 @@
 							</p>
 
 							{{-- Meta Info --}}
-							<div class="flex items-center justify-between pt-4 border-t border-gray-100">
+						<div class="flex items-center justify-between pt-4 border-t border-gray-100">
 								<div class="flex items-center gap-2 text-xs text-gray-500">
 									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 									</svg>
 									<span>{{ $post->published_at?->format('d M Y') }}</span>
 								</div>
-								@if(isset($post->reading_time))
-									<div class="flex items-center gap-1.5 text-xs text-gray-500">
-										<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-										</svg>
-										<span>{{ $post->reading_time }} dk</span>
-									</div>
-								@endif
+							@if(isset($post->reading_time))
+								<div class="flex items-center gap-1.5 text-xs text-gray-500">
+									<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+									</svg>
+									<span>{{ $post->reading_time }} dk</span>
+								</div>
+							@endif
+
+							<div class="flex items-center gap-3">
+								<div class="flex items-center gap-1.5 text-xs text-green-700 bg-green-50 px-2 py-1 rounded">
+									<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/></svg>
+									<span>{{ $post->likes_count ?? 0 }}</span>
+								</div>
+								<div class="flex items-center gap-1.5 text-xs text-red-700 bg-red-50 px-2 py-1 rounded">
+									<svg class="w-3.5 h-3.5 rotate-180" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/></svg>
+									<span>{{ $post->dislikes_count ?? 0 }}</span>
+								</div>
+							</div>
 							</div>
 
 							{{-- Author (Optional) --}}

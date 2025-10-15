@@ -13,6 +13,10 @@ class PostsPageController extends Controller
     public function index(Request $request): View
     {
         $query = Post::with(['media', 'categories', 'user'])
+            ->withCount([
+                'reactions as likes_count' => function ($q) { $q->where('value', 1); },
+                'reactions as dislikes_count' => function ($q) { $q->where('value', -1); },
+            ])
             ->where('status', 1);
 
         if ($search = trim((string) $request->input('q'))) {

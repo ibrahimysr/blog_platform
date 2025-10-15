@@ -25,6 +25,8 @@ use App\Http\Controllers\EventsPageController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/yazilar', [PostsPageController::class, 'index'])->name('posts.list');
 Route::get('/yazilar/{post:slug}', [PostDetailController::class, 'show'])->name('posts.show');
+Route::post('/yazilar/{post:slug}/yorum', [PostDetailController::class, 'storeComment'])->name('posts.comment.store');
+Route::post('/yazilar/{post:slug}/reaksiyon', [PostDetailController::class, 'react'])->name('posts.react');
 Route::get('/etkinlikler', [EventsPageController::class, 'index'])->name('events.list');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');

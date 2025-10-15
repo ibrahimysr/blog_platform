@@ -6,12 +6,18 @@ use App\Models\Post;
 use App\Models\PostViewLog;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Reaction;
 
 class PostDetailController extends Controller
 {
     public function show(Post $post): View
     {
-        $post->load(['user', 'categories', 'media', 'comments.user']);
+        $post->load(['user', 'categories', 'media', 'comments.user'])
+            ->loadCount([
+                'reactions as likes_count' => function ($q) { $q->where('value', 1); },
+                'reactions as dislikes_count' => function ($q) { $q->where('value', -1); },
+            ]);
         
         $this->logView($post);
         
@@ -39,5 +45,42 @@ class PostDetailController extends Controller
         ]);
         
         $post->increment('views');
+    }
+
+    public function storeComment(Request $request, Post $post): RedirectResponse
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        $data = $request->validate([
+            'content' => ['required','string','min:3','max:1000'],
+        ]);
+
+        $post->comments()->create([
+            'user_id' => auth()->id(),
+            'content' => $data['content'],
+            'status' => 1,
+        ]);
+
+        return back()->with('status', 'Yorum eklendi');
+    }
+
+    public function react(Request $request, Post $post): RedirectResponse
+    {
+        if (!auth()->check()) {
+            return redirect()->route('login');
+        }
+
+        $data = $request->validate([
+            'value' => ['required','in:1,-1'],
+        ]);
+
+        Reaction::updateOrCreate(
+            ['post_id' => $post->id, 'user_id' => auth()->id()],
+            ['value' => (int)$data['value']]
+        );
+
+        return back();
     }
 }

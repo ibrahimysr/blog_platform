@@ -73,6 +73,37 @@
 					</svg>
 					<span>{{ number_format($post->views) }} görüntülenme</span>
 				</div>
+
+				<div class="flex items-center gap-2 ml-auto">
+					<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 text-green-700">
+						<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/></svg>
+						<span>{{ $post->likes_count ?? 0 }}</span>
+					</div>
+					<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 text-red-700">
+						<svg class="w-4 h-4 rotate-180" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/></svg>
+						<span>{{ $post->dislikes_count ?? 0 }}</span>
+					</div>
+					@if(auth()->check())
+						<form method="POST" action="{{ route('posts.react', $post) }}">
+							@csrf
+							<input type="hidden" name="value" value="1">
+							<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 text-green-700 hover:bg-green-100">
+								<svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/></svg>
+								<span>Beğen</span>
+							</button>
+						</form>
+						<form method="POST" action="{{ route('posts.react', $post) }}">
+							@csrf
+							<input type="hidden" name="value" value="-1">
+							<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 text-red-700 hover:bg-red-100">
+								<svg class="w-4 h-4 rotate-180" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/></svg>
+								<span>Beğenme</span>
+							</button>
+						</form>
+					@else
+						<a href="{{ route('login') }}" class="text-sm text-blue-600 underline">Giriş yaparak oy ver</a>
+					@endif
+				</div>
 			</div>
 		</div>
 	</div>
@@ -146,9 +177,9 @@
 			@endif
 
 			{{-- Comments Section --}}
-			@if($post->comments->isNotEmpty())
-				<div class="mt-12 pt-8 border-t border-gray-200">
-					<h3 class="text-2xl font-bold text-gray-900 mb-6">Yorumlar ({{ $post->comments->count() }})</h3>
+			<div class="mt-12 pt-8 border-t border-gray-200">
+				<h3 class="text-2xl font-bold text-gray-900 mb-6">Yorumlar ({{ $post->comments->where('status',1)->count() }})</h3>
+				@if($post->comments->where('status',1)->isNotEmpty())
 					<div class="space-y-6">
 						@foreach($post->comments->where('status', 1) as $comment)
 							<div class="bg-gray-50 rounded-2xl p-6">
@@ -167,8 +198,28 @@
 							</div>
 						@endforeach
 					</div>
-				</div>
-			@endif
+				@else
+					<div class="bg-gray-50 rounded-2xl p-6 text-gray-600">Henüz yorum yok. İlk yorumu sen yaz.</div>
+				@endif
+
+				@if(auth()->check())
+					<div class="mt-8">
+						<form method="POST" action="{{ route('posts.comment.store', $post) }}" class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
+							@csrf
+							<label class="block text-sm font-medium text-gray-700 mb-2">Yorumun</label>
+							<textarea name="content" rows="4" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Düşüncelerini paylaş...">{{ old('content') }}</textarea>
+							<div class="mt-3 flex items-center justify-between">
+								@if($errors->has('content'))
+									<span class="text-sm text-red-600">{{ $errors->first('content') }}</span>
+								@endif
+								<button class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700">Gönder</button>
+							</div>
+						</form>
+					</div>
+				@else
+					<div class="mt-6 bg-blue-50 text-blue-800 px-6 py-4 rounded-xl">Yorum eklemek için lütfen <a class="underline" href="{{ route('login') }}">giriş yap</a>.</div>
+				@endif
+			</div>
 		</article>
 
 		{{-- Sidebar --}}
