@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('posts', PostController::class);
+Route::prefix('admin')->as('admin.')->group(function () {
+    Route::get('/', function () { return view('admin.dashboard'); })->name('dashboard');
+    Route::resource('posts', PostController::class);
+});

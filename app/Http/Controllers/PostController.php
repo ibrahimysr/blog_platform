@@ -17,14 +17,14 @@ class PostController extends Controller
     public function index(): View
     {
         $posts = Post::with(['categories', 'media', 'user'])->latest()->paginate(15);
-        return view('posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts'));
     }
 
 
     public function create(): View
     {
         $categories = Category::orderBy('name')->get();
-        return view('posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories'));
     }
 
     public function store(StorePostRequest $request): RedirectResponse
@@ -60,14 +60,14 @@ class PostController extends Controller
             $post->media()->createMany($mediaRecords);
         }
 
-        return redirect()->route('posts.edit', $post);
+        return redirect()->route('admin.posts.edit', $post);
     }
 
 
     public function show(Post $post): View
     {
         $post->load(['categories', 'media', 'user']);
-        return view('posts.show', compact('post'));
+        return view('admin.posts.show', compact('post'));
     }
 
  
@@ -75,7 +75,7 @@ class PostController extends Controller
     {
         $categories = Category::orderBy('name')->get();
         $post->load(['categories', 'media']);
-        return view('posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
  
@@ -115,13 +115,13 @@ class PostController extends Controller
             }
         }
 
-        return redirect()->route('posts.edit', $post);
+        return redirect()->route('admin.posts.edit', $post);
     }
 
   
     public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.posts.index');
     }
 }
