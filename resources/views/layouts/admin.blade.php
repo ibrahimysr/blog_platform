@@ -16,7 +16,7 @@
 				<ul class="space-y-2">
 					<li><a href="{{ route('admin.posts.index') }}">Yazılar</a></li>
 					<li><a href="{{ route('admin.categories.index') }}">Kategoriler</a></li>
-					<li><a href="#">Etkinlikler</a></li>
+					<li><a href="{{ route('admin.events.index') }}">Etkinlikler</a></li>
 				</ul>
 			</aside>
 			<main class="col-span-9">
