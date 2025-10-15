@@ -36,20 +36,24 @@
 
 	<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 		@forelse($events as $event)
-			<a href="#" class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all">
-				<div class="relative h-40 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+			<div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all">
+				<a href="{{ route('events.show', $event) }}" class="block relative h-40 bg-gradient-to-br from-blue-50 to-purple-50">
 					@if($event->media_url)
 						<img src="{{ $event->media_url }}" alt="{{ $event->title }}" class="w-full h-full object-cover">
 					@else
-						<svg class="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+						<div class="w-full h-full flex items-center justify-center">
+							<svg class="w-16 h-16 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+						</div>
 					@endif
 					<div class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/95 rounded-full text-xs font-bold text-gray-900">
 						<span class="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
 						{{ $event->category?->name ?? 'Genel' }}
 					</div>
-				</div>
+				</a>
 				<div class="p-6">
-					<h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors line-clamp-2">{{ $event->title }}</h3>
+					<a href="{{ route('events.show', $event) }}" class="block">
+						<h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors line-clamp-2">{{ $event->title }}</h3>
+					</a>
 					<p class="text-sm text-gray-600 line-clamp-2 mt-2">{{ Str::limit(strip_tags($event->description), 110) }}</p>
 					<div class="mt-4 flex items-center justify-between text-sm text-gray-600">
 						<div class="flex items-center gap-2">
@@ -62,9 +66,14 @@
 								<span>{{ $event->location }}</span>
 							</div>
 						@endif
-					</div>
 				</div>
-			</a>
+				<a href="{{ route('events.show', $event) }}" class="inline-flex items-center text-blue-600 font-semibold text-sm hover:text-blue-700">
+					Detaylar
+					<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+					</svg>
+				</a>
+			</div>
 		@empty
 			<div class="col-span-full text-center py-16 text-gray-500">Etkinlik bulunamadı.</div>
 		@endforelse
