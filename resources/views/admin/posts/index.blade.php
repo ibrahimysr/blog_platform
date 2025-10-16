@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('title', 'Yazılar')
+@section('title', 'Bloglar')
 
 @section('content')
 	<!-- Page Header -->
 	<div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
 		<div>
-			<h1 class="text-3xl font-bold text-gray-900">Yazılar</h1>
-			<p class="mt-1 text-sm text-gray-500">Tüm blog yazılarınızı yönetin</p>
+			<h1 class="text-3xl font-bold text-gray-900">Bloglar</h1>
+			<p class="mt-1 text-sm text-gray-500">Tüm bloglarınızı yönetin</p>
 		</div>
 		<div class="mt-4 md:mt-0">
 			<a href="{{ route('admin.posts.create') }}" 

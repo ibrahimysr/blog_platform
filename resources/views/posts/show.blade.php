@@ -15,7 +15,7 @@
 				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
 				</svg>
-				<a href="{{ route('posts.list') }}" class="hover:text-blue-600 transition-colors">Yazılar</a>
+				<a href="{{ route('posts.list') }}" class="hover:text-blue-600 transition-colors">Bloglar</a>
 				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
 				</svg>
@@ -243,7 +243,7 @@
 			{{-- Related Posts --}}
 			@if($relatedPosts->isNotEmpty())
 				<div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-					<h3 class="text-lg font-bold text-gray-900 mb-4">İlgili Yazılar</h3>
+					<h3 class="text-lg font-bold text-gray-900 mb-4">İlgili Bloglar</h3>
 					<div class="space-y-4">
 						@foreach($relatedPosts as $relatedPost)
 							@php $img = $relatedPost->media->firstWhere('is_primary', true) ?: $relatedPost->media->first(); @endphp
@@ -285,7 +285,7 @@
 						</svg>
 					</div>
 					<h3 class="text-xl font-bold text-white mb-2">Bültene Abone Ol</h3>
-					<p class="text-blue-100 text-sm mb-5 leading-relaxed">Benzer yazılardan ilk siz haberdar olun.</p>
+					<p class="text-blue-100 text-sm mb-5 leading-relaxed">Benzer bloglardan ilk siz haberdar olun.</p>
 					<form class="space-y-3">
 						<input type="email" 
 						       placeholder="E-posta adresiniz" 
