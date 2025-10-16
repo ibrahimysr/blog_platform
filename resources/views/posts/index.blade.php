@@ -219,30 +219,7 @@
 				</div>
 			@endif
 
-			{{-- Newsletter Widget --}}
-			<div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-purple-700 rounded-2xl p-6 shadow-xl overflow-hidden">
-				<div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-				<div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-				
-				<div class="relative">
-					<div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mb-4">
-						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-						</svg>
-					</div>
-					<h3 class="text-xl font-bold text-white mb-2">Bültene Abone Ol</h3>
-					<p class="text-blue-100 text-sm mb-5 leading-relaxed">Yeni yazılardan ilk siz haberdar olun. Haftada bir e-posta.</p>
-					<form class="space-y-3">
-						<input type="email" 
-						       placeholder="E-posta adresiniz" 
-						       class="w-full px-4 py-3 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/95 backdrop-blur-sm shadow-lg text-sm">
-						<button class="w-full bg-white text-blue-700 font-bold py-3 rounded-xl hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-sm">
-							Abone Ol →
-						</button>
-					</form>
-					<p class="text-xs text-blue-200 mt-3 text-center">Spam göndermiyoruz. Dilediğiniz zaman abonelikten çıkabilirsiniz.</p>
-				</div>
-			</div>
+			{{-- Newsletter removed per request --}}
 
 			{{-- Popular Tags (Optional) --}}
 			<div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-100">

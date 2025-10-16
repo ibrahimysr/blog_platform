@@ -10,131 +10,165 @@
 		$routePostsShow = \Illuminate\Support\Facades\Route::has('posts.show');
 	@endphp
 
-	{{-- HERO SECTION --}}
-	<section class="relative -mt-8 mb-16">
-		<div class="relative w-full h-[500px] md:h-[600px] rounded-3xl overflow-hidden group">
-			@if($hero)
-				<img src="{{ $hero->url }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="{{ $firstFeatured->title ?? '' }}">
-			@else
-				<div class="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600"></div>
-			@endif
-			<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-			
-			{{-- Hero Content --}}
-			<div class="absolute inset-0 flex flex-col justify-end p-8 md:p-12 lg:p-16">
-				<div class="max-w-3xl">
-                    @if($firstFeatured)
-						@if($firstFeatured->categories->isNotEmpty())
-							<span class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-full mb-4">
-								<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
-								</svg>
-								{{ $firstFeatured->categories->first()->name }}
+	{{-- HERO SECTION - Ultra Modern Design --}}
+	<section class="relative -mt-8 mb-24 overflow-hidden">
+		<div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 opacity-60"></div>
+		<div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+		<div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+		<div class="absolute bottom-0 left-1/3 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+		
+		<div class="relative container mx-auto px-4 pt-20 pb-24">
+			<div class="grid lg:grid-cols-2 gap-12 items-center">
+				{{-- Hero Content --}}
+				<div class="space-y-8 z-10">
+					@if($firstFeatured)
+						<div class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white text-sm font-semibold shadow-lg backdrop-blur-sm">
+							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+								<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+							</svg>
+							<span>{{ $firstFeatured->categories->first()->name ?? 'Öne Çıkan' }}</span>
+						</div>
+						
+						<h1 class="text-5xl lg:text-7xl font-black text-gray-900 leading-tight">
+							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+								{{ Str::limit($firstFeatured->title, 60) }}
 							</span>
-						@endif
-						<h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
-							{{ $firstFeatured->title }}
 						</h1>
-						<p class="text-lg md:text-xl text-gray-200 mb-6 line-clamp-2">
-							{{ $firstFeatured->excerpt ?? Str::limit(strip_tags($firstFeatured->content), 150) }}
+						
+						<p class="text-xl text-gray-600 leading-relaxed">
+							{{ $firstFeatured->excerpt ?? Str::limit(strip_tags($firstFeatured->content), 180) }}
 						</p>
-						<div class="flex items-center space-x-6 text-sm text-gray-300 mb-6">
-							<span class="flex items-center">
-								<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-								</svg>
-								{{ $firstFeatured->published_at?->format('d M Y') }}
-							</span>
+						
+						<div class="flex flex-wrap items-center gap-6">
+							<div class="flex items-center space-x-2 text-gray-600">
+								<div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+									{{ substr($firstFeatured->author->name ?? 'A', 0, 1) }}
+								</div>
+								<div>
+									<p class="font-semibold text-sm">{{ $firstFeatured->author->name ?? 'Admin' }}</p>
+									<p class="text-xs text-gray-500">{{ $firstFeatured->published_at?->format('d M Y') }}</p>
+								</div>
+							</div>
 							@if(isset($firstFeatured->reading_time))
-								<span class="flex items-center">
-									<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<div class="flex items-center space-x-2 text-gray-600">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
 									</svg>
-									{{ $firstFeatured->reading_time }} dk okuma
-								</span>
+									<span class="text-sm font-medium">{{ $firstFeatured->reading_time }} dk okuma</span>
+								</div>
 							@endif
 						</div>
-						<a href="{{ $routePostsShow ? route('posts.show', $firstFeatured->slug ?? $firstFeatured->id) : '#' }}" class="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-							Devamını Oku
-							<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-							</svg>
-						</a>
+						
+						<div class="flex flex-wrap gap-4">
+							<a href="{{ $routePostsShow ? route('posts.show', $firstFeatured->slug ?? $firstFeatured->id) : '#' }}" 
+							   class="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300">
+								Yazıyı Oku
+								<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+								</svg>
+							</a>
+							<button class="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-200 hover:border-purple-500 hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+								<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+								</svg>
+								Kaydet
+							</button>
+						</div>
 					@else
-						<h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
-							Keşfet, Öğren, İlham Al
+						<h1 class="text-6xl lg:text-8xl font-black text-gray-900">
+							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+								İlham Veren
+							</span><br>
+							<span class="text-gray-900">İçerikler</span>
 						</h1>
-						<p class="text-xl text-gray-200 mb-8">
-							En güncel içerikler, trendler ve uzman görüşleri burada
+						<p class="text-2xl text-gray-600">
+							Keşfet, öğren ve büyü. En güncel trendler ve uzman görüşleri bir arada.
 						</p>
 					@endif
+				</div>
+				
+				{{-- Hero Image --}}
+				<div class="relative group">
+					<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl blur-2xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+					<div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+						@if($hero)
+							<img src="{{ $hero->url }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $firstFeatured->title ?? '' }}">
+						@else
+							<div class="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"></div>
+						@endif
+						<div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	{{-- FEATURED ARTICLES --}}
+	{{-- FEATURED ARTICLES - Bento Grid Style --}}
 	@if($featuredPosts->count() > 1)
-		<section class="mb-20">
-			<div class="flex items-center justify-between mb-8">
-				<h2 class="text-3xl md:text-4xl font-bold text-gray-900 flex items-center">
-					<span class="w-2 h-8 bg-blue-600 rounded-full mr-4"></span>
-					Öne Çıkan Yazılar
-				</h2>
-				<a href="#" class="text-blue-600 hover:text-blue-700 font-semibold flex items-center group">
-					Tümünü Gör
-					<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+		<section class="container mx-auto px-4 mb-32">
+			<div class="flex items-center justify-between mb-12">
+				<div>
+					<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">Öne Çıkan Yazılar</h2>
+					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+				</div>
+				<a href="#" class="group hidden md:flex items-center space-x-2 px-6 py-3 bg-gray-900 text-white font-bold rounded-full hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
+					<span>Tümünü Gör</span>
+					<svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
 					</svg>
 				</a>
 			</div>
 			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				@foreach ($featuredPosts->skip(1) as $post)
-					@php $img = $post->media->firstWhere('is_primary', true) ?: $post->media->first(); @endphp
-					<article class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-						<a href="{{ route('posts.show', $post->slug ?? $post->id) }}" class="block relative h-56 overflow-hidden">
-						@if($img)
-								<img src="{{ $img->url }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="{{ $img->alt }}">
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				@foreach ($featuredPosts->skip(1)->take(6) as $index => $post)
+					@php 
+						$img = $post->media->firstWhere('is_primary', true) ?: $post->media->first();
+						$spanClass = ($index == 0) ? 'md:col-span-2 md:row-span-2' : '';
+					@endphp
+					<article class="group relative {{ $spanClass }} rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+						<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block relative h-full min-h-[300px]">
+							@if($img)
+								<img src="{{ $img->url }}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $img->alt }}">
 							@else
-								<div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500"></div>
+								<div class="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"></div>
 							@endif
-							<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+							<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 							
-							@if($post->categories->isNotEmpty())
-								<span class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-blue-600 text-xs font-bold rounded-full">
-									{{ $post->categories->first()->name }}
-								</span>
-							@endif
-						</a>
-						
-						<div class="p-6">
-							<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block">
-								<h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
-									{{ $post->title }}
-								</h3>
-							</a>
-							<p class="text-gray-600 line-clamp-3 mb-4">
-								{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 120) }}
-							</p>
-							
-							<div class="flex items-center justify-between text-sm text-gray-500">
-								<span class="flex items-center">
-									<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-									</svg>
-									{{ $post->published_at?->format('d.m.Y') }}
-								</span>
-								@if(isset($post->reading_time))
-									<span class="flex items-center">
-										<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-										</svg>
-										{{ $post->reading_time }} dk
+							<div class="absolute inset-0 p-8 flex flex-col justify-end">
+								@if($post->categories->isNotEmpty())
+									<span class="inline-flex self-start items-center px-4 py-2 bg-white/20 backdrop-blur-md text-white text-xs font-bold rounded-full mb-4 border border-white/30">
+										{{ $post->categories->first()->name }}
 									</span>
 								@endif
+								
+								<h3 class="text-2xl {{ $index == 0 ? 'lg:text-4xl' : 'lg:text-3xl' }} font-black text-white mb-3 line-clamp-3 group-hover:text-blue-300 transition-colors">
+									{{ $post->title }}
+								</h3>
+								
+								@if($index == 0)
+									<p class="text-gray-200 text-lg line-clamp-2 mb-4">
+										{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 120) }}
+									</p>
+								@endif
+								
+								<div class="flex items-center justify-between text-sm text-gray-300">
+									<span class="flex items-center">
+										<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+										</svg>
+										{{ $post->published_at?->format('d M Y') }}
+									</span>
+									@if(isset($post->reading_time))
+										<span class="flex items-center">
+											<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+											</svg>
+											{{ $post->reading_time }} dk
+										</span>
+									@endif
+								</div>
 							</div>
-						</div>
+						</a>
 					</article>
 				@endforeach
 			</div>
@@ -142,93 +176,95 @@
 	@endif
 
 	{{-- LATEST POSTS & SIDEBAR --}}
-	<section class="mb-20">
-		<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+	<section class="container mx-auto px-4 mb-32">
+		<div class="grid lg:grid-cols-3 gap-12">
 			{{-- Latest Posts --}}
 			<div class="lg:col-span-2">
 				<div class="flex items-center justify-between mb-8">
-					<h2 class="text-3xl md:text-4xl font-bold text-gray-900 flex items-center">
-						<span class="w-2 h-8 bg-blue-600 rounded-full mr-4"></span>
-						Son Yazılar
-					</h2>
+					<div>
+						<h2 class="text-4xl font-black text-gray-900 mb-2">Son Yazılar</h2>
+						<div class="h-2 w-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+					</div>
 				</div>
 				
 				{{-- Category Filter --}}
-				<div class="flex gap-3 mb-8 overflow-x-auto pb-2">
-					<button class="px-5 py-2 bg-blue-600 text-white rounded-full text-sm font-semibold whitespace-nowrap hover:bg-blue-700 transition-colors">
+				<div class="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+					<button class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl text-sm font-bold whitespace-nowrap shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 						Tümü
 					</button>
-					@foreach($topCategories->take(4) as $cat)
-						<button class="px-5 py-2 bg-white text-gray-700 rounded-full text-sm font-semibold whitespace-nowrap hover:bg-gray-100 transition-colors border border-gray-200">
+					@foreach($topCategories->take(5) as $cat)
+						<button class="px-6 py-3 bg-white text-gray-700 rounded-2xl text-sm font-bold whitespace-nowrap hover:bg-gray-900 hover:text-white transition-all duration-300 border-2 border-gray-200 hover:border-gray-900 transform hover:scale-105">
 							{{ $cat->name }}
 						</button>
 					@endforeach
 				</div>
 
-				<div class="space-y-6">
+				<div class="space-y-8">
 					@forelse ($latestPosts as $post)
 						@php $img = $post->media->firstWhere('is_primary', true) ?: $post->media->first(); @endphp
-						<article class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row">
-						<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="relative w-full sm:w-64 h-48 sm:h-auto flex-shrink-0 overflow-hidden">
-								@if($img)
-									<img src="{{ $img->url }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="{{ $img->alt }}">
-								@else
-									<div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400"></div>
-								@endif
-								<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-							</a>
-							
-							<div class="p-6 flex flex-col justify-between flex-grow">
-								<div>
-									@if($post->categories->isNotEmpty())
-										<span class="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded-full mb-3">
-											{{ $post->categories->first()->name }}
-										</span>
+						<article class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
+							<div class="flex flex-col md:flex-row">
+								<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="relative w-full md:w-80 h-64 md:h-auto flex-shrink-0 overflow-hidden">
+									@if($img)
+										<img src="{{ $img->url }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $img->alt }}">
+									@else
+										<div class="w-full h-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400"></div>
 									@endif
-									
-							<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block">
-										<h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
-											{{ $post->title }}
-										</h3>
-									</a>
-									
-									<p class="text-gray-600 line-clamp-2 mb-4">
-										{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 140) }}
-									</p>
-								</div>
+									<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+								</a>
 								
-								<div class="flex items-center justify-between">
-									<div class="flex items-center space-x-4 text-sm text-gray-500">
-										<span class="flex items-center">
-											<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-											</svg>
-											{{ $post->published_at?->format('d.m.Y') }}
-										</span>
-										@if(isset($post->reading_time))
-											<span class="flex items-center">
-												<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-												</svg>
-												{{ $post->reading_time }} dk
+								<div class="p-8 flex flex-col justify-between flex-grow">
+									<div>
+										@if($post->categories->isNotEmpty())
+											<span class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-xs font-bold rounded-full mb-4">
+												{{ $post->categories->first()->name }}
 											</span>
 										@endif
+										
+										<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block group">
+											<h3 class="text-2xl font-black text-gray-900 mb-3 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+												{{ $post->title }}
+											</h3>
+										</a>
+										
+										<p class="text-gray-600 text-lg line-clamp-2 mb-6">
+											{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 140) }}
+										</p>
 									</div>
-							<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="text-blue-600 font-semibold text-sm hover:text-blue-700 flex items-center group">
-										Oku
-										<svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-										</svg>
-									</a>
+									
+									<div class="flex items-center justify-between">
+										<div class="flex items-center space-x-4 text-sm text-gray-500">
+											<span class="flex items-center font-medium">
+												<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+												</svg>
+												{{ $post->published_at?->format('d.m.Y') }}
+											</span>
+											@if(isset($post->reading_time))
+												<span class="flex items-center font-medium">
+													<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+													</svg>
+													{{ $post->reading_time }} dk
+												</span>
+											@endif
+										</div>
+										<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+											<span>Oku</span>
+											<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+											</svg>
+										</a>
+									</div>
 								</div>
 							</div>
 						</article>
 					@empty
-						<div class="text-center py-12 bg-white rounded-2xl">
-							<svg class="w-16 h-16 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<div class="text-center py-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl">
+							<svg class="w-24 h-24 mx-auto text-gray-300 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 							</svg>
-							<p class="text-gray-500 text-lg">Henüz yazı bulunmuyor</p>
+							<p class="text-gray-500 text-xl font-semibold">Henüz yazı bulunmuyor</p>
 						</div>
 					@endforelse
 				</div>
@@ -238,53 +274,58 @@
 			<div class="space-y-8">
 				{{-- Popular Posts --}}
 				@if($popularPosts->count())
-					<div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-6 border border-blue-100">
-						<h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-							<svg class="w-6 h-6 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-								<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-							</svg>
-							Popüler Yazılar
-						</h3>
-						<div class="space-y-4">
-							@foreach($popularPosts as $index => $post)
-								<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="flex items-start space-x-3 group">
-									<span class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">
-										{{ $index + 1 }}
-									</span>
-									<div class="flex-grow">
-										<h4 class="font-semibold text-gray-900 line-clamp-2 group-hover:text-blue-600 transition-colors mb-1">
-											{{ $post->title }}
-										</h4>
-										<div class="flex items-center text-xs text-gray-500">
-											<span>{{ $post->published_at?->format('d.m.Y') }}</span>
-											@if($post->categories->isNotEmpty())
-												<span class="mx-2">•</span>
-												<span>{{ $post->categories->first()->name }}</span>
-											@endif
+					<div class="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-8 shadow-2xl overflow-hidden">
+						<div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20"></div>
+						<div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
+						
+						<div class="relative z-10">
+							<h3 class="text-2xl font-black text-white mb-8 flex items-center">
+								<svg class="w-7 h-7 mr-3" fill="currentColor" viewBox="0 0 20 20">
+									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+								</svg>
+								Popüler Yazılar
+							</h3>
+							<div class="space-y-5">
+								@foreach($popularPosts->take(5) as $index => $post)
+									<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="flex items-start space-x-4 group">
+										<span class="flex-shrink-0 w-10 h-10 bg-white text-purple-600 rounded-xl flex items-center justify-center font-black text-lg shadow-lg">
+											{{ $index + 1 }}
+										</span>
+										<div class="flex-grow">
+											<h4 class="font-bold text-white line-clamp-2 group-hover:text-blue-200 transition-colors mb-2">
+												{{ $post->title }}
+											</h4>
+											<div class="flex items-center text-xs text-blue-100">
+												<span>{{ $post->published_at?->format('d.m.Y') }}</span>
+												@if($post->categories->isNotEmpty())
+													<span class="mx-2">•</span>
+													<span>{{ $post->categories->first()->name }}</span>
+												@endif
+											</div>
 										</div>
-									</div>
-								</a>
-							@endforeach
+									</a>
+								@endforeach
+							</div>
 						</div>
 					</div>
 				@endif
 
 				{{-- Categories --}}
 				@if($topCategories->count())
-					<div class="bg-white rounded-2xl p-6 shadow-lg">
-						<h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-							<svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="bg-white rounded-3xl p-8 shadow-xl">
+						<h3 class="text-2xl font-black text-gray-900 mb-8 flex items-center">
+							<svg class="w-7 h-7 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
 							</svg>
 							Kategoriler
 						</h3>
 						<div class="space-y-3">
-							@foreach($topCategories as $cat)
-								<a href="#" class="flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors group">
-									<span class="font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
+							@foreach($topCategories->take(6) as $cat)
+								<a href="#" class="group flex items-center justify-between p-4 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 border-2 border-transparent hover:border-purple-200">
+									<span class="font-bold text-gray-700 group-hover:text-purple-600 transition-colors">
 										{{ $cat->name }}
 									</span>
-									<span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold">
+									<span class="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-xl text-sm font-black group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition-all duration-300">
 										{{ $cat->posts_count }}
 									</span>
 								</a>
@@ -293,62 +334,51 @@
 					</div>
 				@endif
 
-				{{-- Newsletter --}}
-				<div class="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
-					<div class="text-center mb-6">
-						<svg class="w-12 h-12 mx-auto mb-3 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-						</svg>
-						<h3 class="text-xl font-bold mb-2">Bültene Abone Ol</h3>
-						<p class="text-sm text-blue-100">Yeni içeriklerden ilk sen haberdar ol!</p>
-					</div>
-					<form class="space-y-3">
-						<input type="email" placeholder="Email adresiniz" class="w-full px-4 py-3 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white">
-						<button type="submit" class="w-full bg-white text-blue-600 font-bold py-3 rounded-xl hover:bg-gray-100 transition-colors shadow-lg">
-							Abone Ol
-						</button>
-					</form>
-				</div>
+				{{-- Newsletter removed per request --}}
 			</div>
 		</div>
 	</section>
 
 	{{-- UPCOMING EVENTS --}}
 	@if($upcomingEvents->count())
-		<section class="mb-20">
-			<div class="flex items-center justify-between mb-8">
-				<h2 class="text-3xl md:text-4xl font-bold text-gray-900 flex items-center">
-					<span class="w-2 h-8 bg-blue-600 rounded-full mr-4"></span>
-					Yaklaşan Etkinlikler
-				</h2>
+		<section class="container mx-auto px-4 mb-32">
+			<div class="flex items-center justify-between mb-12">
+				<div>
+					<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">Yaklaşan Etkinlikler</h2>
+					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+				</div>
 			</div>
 			
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 				@foreach($upcomingEvents as $event)
-					<article class="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 border-blue-600">
-						<div class="flex items-center space-x-3 mb-4">
-							<div class="flex-shrink-0 w-16 h-16 bg-blue-600 rounded-xl flex flex-col items-center justify-center text-white">
-								<span class="text-2xl font-bold">{{ $event->event_date?->format('d') }}</span>
-								<span class="text-xs uppercase">{{ $event->event_date?->format('M') }}</span>
-							</div>
-							<div class="flex-grow">
-								<div class="text-sm text-gray-500 mb-1">
-									{{ $event->event_date?->format('H:i') }}
+					<article class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
+						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full -mr-16 -mt-16"></div>
+						
+						<div class="relative z-10">
+							<div class="flex items-start space-x-4 mb-6">
+								<div class="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex flex-col items-center justify-center text-white shadow-lg">
+									<span class="text-3xl font-black">{{ $event->event_date?->format('d') }}</span>
+									<span class="text-xs uppercase font-bold">{{ $event->event_date?->format('M') }}</span>
 								</div>
-								<h3 class="font-bold text-gray-900 line-clamp-1 group-hover:text-blue-600 transition-colors">
-									{{ $event->title }}
-								</h3>
+								<div class="flex-grow">
+									<div class="text-sm text-gray-500 font-semibold mb-2">
+										{{ $event->event_date?->format('H:i') }}
+									</div>
+									<h3 class="text-xl font-black text-gray-900 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+										{{ $event->title }}
+									</h3>
+								</div>
 							</div>
+							<p class="text-gray-600 line-clamp-3 mb-6 leading-relaxed">
+								{{ Str::limit(strip_tags($event->description), 120) }}
+							</p>
+							<a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+								<span>Detayları Gör</span>
+								<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+								</svg>
+							</a>
 						</div>
-						<p class="text-gray-600 line-clamp-3 mb-4">
-							{{ Str::limit(strip_tags($event->description), 120) }}
-						</p>
-						<a href="#" class="inline-flex items-center text-blue-600 font-semibold text-sm hover:text-blue-700">
-							Detaylar
-							<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-							</svg>
-						</a>
 					</article>
 				@endforeach
 			</div>
@@ -357,32 +387,35 @@
 
 	{{-- RECENT COMMENTS --}}
 	@if($recentComments->count())
-		<section class="mb-20">
-			<div class="flex items-center justify-between mb-8">
-				<h2 class="text-3xl md:text-4xl font-bold text-gray-900 flex items-center">
-					<span class="w-2 h-8 bg-blue-600 rounded-full mr-4"></span>
-					Son Yorumlar
-				</h2>
+		<section class="container mx-auto px-4 mb-32">
+			<div class="flex items-center justify-between mb-12">
+				<div>
+					<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">Son Yorumlar</h2>
+					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+				</div>
 			</div>
 			
-			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+			<div class="grid md:grid-cols-2 gap-8">
 				@foreach($recentComments as $comment)
-					<div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow">
+					<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
 						<div class="flex items-start space-x-4">
-							<div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+							<div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg">
 								{{ substr($comment->user_name ?? 'A', 0, 1) }}
 							</div>
 							<div class="flex-grow">
-								<div class="flex items-center justify-between mb-2">
-									<h4 class="font-semibold text-gray-900">{{ $comment->user_name ?? 'Anonim' }}</h4>
-									<span class="text-xs text-gray-500">{{ $comment->created_at?->diffForHumans() }}</span>
+								<div class="flex items-center justify-between mb-3">
+									<h4 class="font-black text-gray-900">{{ $comment->user_name ?? 'Anonim' }}</h4>
+									<span class="text-xs text-gray-500 font-semibold">{{ $comment->created_at?->diffForHumans() }}</span>
 								</div>
-								<p class="text-gray-600 mb-3 line-clamp-3">
+								<p class="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
 									{{ $comment->content }}
 								</p>
 								@if($comment->post)
-									<a href="{{ $routePostsShow ? route('posts.show', $comment->post->slug ?? $comment->post->id) : '#' }}" class="text-sm text-blue-600 hover:text-blue-700 font-medium">
-										{{ $comment->post->title }}
+									<a href="{{ $routePostsShow ? route('posts.show', $comment->post->slug ?? $comment->post->id) : '#' }}" class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-purple-600 transition-colors">
+										<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+										</svg>
+										<span class="line-clamp-1">{{ $comment->post->title }}</span>
 									</a>
 								@endif
 							</div>
@@ -392,4 +425,57 @@
 			</div>
 		</section>
 	@endif
+
+	{{-- CTA SECTION --}}
+	<section class="container mx-auto px-4 mb-20">
+		<div class="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 lg:p-20 overflow-hidden shadow-2xl">
+			<div class="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full -ml-48 -mt-48"></div>
+			<div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mb-48"></div>
+			
+			<div class="relative z-10 text-center max-w-3xl mx-auto">
+				<h2 class="text-4xl lg:text-6xl font-black text-white mb-6">
+					İlham Verici İçerikler<br>Seni Bekliyor
+				</h2>
+				<p class="text-xl text-blue-100 mb-10 leading-relaxed">
+					Her gün yeni makaleler, rehberler ve uzman görüşleriyle büyümeye devam et. Topluluğumuza katıl ve fark yarat!
+				</p>
+				<div class="flex flex-wrap justify-center gap-4">
+					<a href="#" class="inline-flex items-center px-10 py-5 bg-white text-gray-900 font-black rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg">
+						<span>Hemen Başla</span>
+						<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+						</svg>
+					</a>
+					<a href="#" class="inline-flex items-center px-10 py-5 bg-white/10 backdrop-blur-md text-white font-black rounded-full border-2 border-white/30 hover:bg-white/20 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg">
+						<span>Daha Fazla Keşfet</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<style>
+		@keyframes blob {
+			0% { transform: translate(0px, 0px) scale(1); }
+			33% { transform: translate(30px, -50px) scale(1.1); }
+			66% { transform: translate(-20px, 20px) scale(0.9); }
+			100% { transform: translate(0px, 0px) scale(1); }
+		}
+		.animate-blob {
+			animation: blob 7s infinite;
+		}
+		.animation-delay-2000 {
+			animation-delay: 2s;
+		}
+		.animation-delay-4000 {
+			animation-delay: 4s;
+		}
+		.scrollbar-hide::-webkit-scrollbar {
+			display: none;
+		}
+		.scrollbar-hide {
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+	</style>
 @endsection
