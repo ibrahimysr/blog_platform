@@ -191,7 +191,7 @@
 								Etkinlik Hakkında
 							</h2>
 							<div class="prose prose-lg prose-purple max-w-none prose-headings:font-black prose-p:text-gray-700 prose-p:leading-relaxed">
-								{!! nl2br(e($event->description)) !!}
+								@safeHtml($event->description)
 							</div>
 						</div>
 

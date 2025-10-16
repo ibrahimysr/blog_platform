@@ -158,7 +158,7 @@
 
 						{{-- Main Content --}}
 						<div class="prose prose-lg prose-blue max-w-none prose-headings:font-black prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-2xl prose-img:shadow-xl">
-							{!! $post->content !!}
+							@safeHtml($post->content)
 						</div>
 
 						{{-- Additional Media Gallery --}}
