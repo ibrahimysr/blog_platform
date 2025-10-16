@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsPageController;
 use App\Http\Controllers\PostDetailController;
 use App\Http\Controllers\EventsPageController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,8 @@ Route::get('/etkinlik/{event:slug}', [EventsPageController::class, 'show'])->nam
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/register', [RegisterController::class, 'show'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::middleware(['auth','admin'])->group(function () {

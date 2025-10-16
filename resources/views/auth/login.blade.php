@@ -18,14 +18,17 @@
 			@csrf
 			<div>
 				<label class="block text-sm mb-1">E-posta</label>
-				<input type="email" name="email" value="{{ old('email', 'admin@example.com') }}" class="w-full border rounded px-3 py-2" />
+				<input type="email" name="email" value="{{ old('email') }}" class="w-full border rounded px-3 py-2" />
 			</div>
 			<div>
 				<label class="block text-sm mb-1">Şifre</label>
-				<input type="password" name="password" value="password" class="w-full border rounded px-3 py-2" />
+				<input type="password" name="password" value="" class="w-full border rounded px-3 py-2" />
 			</div>
 			<button class="w-full px-4 py-2 bg-blue-600 text-white rounded">Giriş</button>
 		</form>
+		<div class="mt-4 text-sm text-gray-600">
+			Hesabın yok mu? <a class="text-blue-600 hover:underline" href="{{ route('register') }}">Kayıt ol</a>
+		</div>
 	</div>
 </body>
 </html>
