@@ -322,15 +322,16 @@
 						</h3>
 						<div class="space-y-3">
 						@foreach($topCategories->take(6) as $cat)
-							<a href="{{ route('posts.list', ['category' => $cat->id]) }}" class="group flex items-center justify-between p-4 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 border-2 border-transparent hover:border-purple-200">
-									<span class="font-bold text-gray-700 group-hover:text-purple-600 transition-colors">
-										{{ $cat->name }}
-									</span>
-									<span class="px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 rounded-xl text-sm font-black group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white transition-all duration-300">
-										{{ $cat->posts_count }}
-									</span>
-								</a>
-							@endforeach
+							@php $isActive = (int)$activeCatId === (int)$cat->id; @endphp
+							<a href="{{ url('/?category='.$cat->id) }}" class="group flex items-center justify-between p-4 rounded-2xl transition-all duration-300 border-2 {{ $isActive ? 'bg-gradient-to-r from-blue-50 to-purple-50 border-purple-200' : 'border-transparent hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:border-purple-200' }}">
+								<span class="font-bold transition-colors {{ $isActive ? 'text-purple-700' : 'text-gray-700 group-hover:text-purple-600' }}">
+									{{ $cat->name }}
+								</span>
+								<span class="px-4 py-2 rounded-xl text-sm font-black transition-all duration-300 {{ $isActive ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' : 'bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white' }}">
+									{{ $cat->posts_count }}
+								</span>
+							</a>
+						@endforeach
 						</div>
 					</div>
 				@endif
