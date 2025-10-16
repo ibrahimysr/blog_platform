@@ -93,9 +93,9 @@
 					<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl blur-2xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
 					<div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
 						@if($hero)
-							<img src="{{ $hero->url }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $firstFeatured->title ?? '' }}">
+						<img src="{{ $hero->url }}" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-700" alt="{{ $firstFeatured->title ?? '' }}">
 						@else
-							<div class="w-full h-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"></div>
+						<img src="{{ asset('asset/hero1.png') }}" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-700" alt="Hero">
 						@endif
 						<div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
 					</div>
