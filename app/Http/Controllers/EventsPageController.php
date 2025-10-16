@@ -11,31 +11,32 @@ class EventsPageController extends Controller
 {
     public function index(): View
     {
-        $query = Event::with(['category', 'user'])
-            ->where('status', 1)
-            ->orderBy('event_date');
+        $baseQuery = Event::with(['category', 'user'])
+            ->where('status', 1);
 
         if ($q = request('q')) {
-            $query->where(function ($qB) use ($q) {
+            $baseQuery->where(function ($qB) use ($q) {
                 $qB->where('title', 'like', "%{$q}%")->orWhere('description', 'like', "%{$q}%");
             });
         }
 
         if ($cat = request('category')) {
-            $query->where('category_id', $cat);
+            $baseQuery->where('category_id', $cat);
         }
 
-        if ($when = request('when')) {
-            if ($when === 'past') $query->where('event_date', '<', now());
-            if ($when === 'upcoming') $query->where('event_date', '>=', now());
-        } else {
-            $query->where('event_date', '>=', now()->subMonths(1));
-        }
+        $upcomingEvents = (clone $baseQuery)
+            ->where('event_date', '>=', now())
+            ->orderBy('event_date')
+            ->get();
 
-        $events = $query->paginate(12)->withQueryString();
+        $pastEvents = (clone $baseQuery)
+            ->where('event_date', '<', now())
+            ->orderByDesc('event_date')
+            ->get();
+
         $categories = Category::orderBy('name')->get();
 
-        return view('events.index', compact('events', 'categories'));
+        return view('events.index', compact('upcomingEvents', 'pastEvents', 'categories'));
     }
 
     public function show(\App\Models\Event $event): View

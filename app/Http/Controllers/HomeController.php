@@ -55,6 +55,15 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
+        $eventsArePast = false;
+        if ($upcomingEvents->isEmpty()) {
+            $upcomingEvents = Event::where('event_date', '<', now())
+                ->orderByDesc('event_date')
+                ->limit(3)
+                ->get();
+            $eventsArePast = true;
+        }
+
         $recentComments = Comment::with(['post'])
             ->where('status', 1)
             ->orderByDesc('id')
@@ -67,7 +76,8 @@ class HomeController extends Controller
             'popularPosts',
             'topCategories',
             'upcomingEvents',
-            'recentComments'
+            'recentComments',
+            'eventsArePast'
         ));
     }
 }

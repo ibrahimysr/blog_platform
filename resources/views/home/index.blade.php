@@ -339,12 +339,12 @@
 		</div>
 	</section>
 
-	{{-- UPCOMING EVENTS --}}
-	@if($upcomingEvents->count())
+    {{-- UPCOMING OR RECENT EVENTS --}}
+    @if($upcomingEvents->count())
 		<section class="container mx-auto px-4 mb-32">
 			<div class="flex items-center justify-between mb-12">
 				<div>
-					<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">Yaklaşan Etkinlikler</h2>
+                    <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">{{ ($eventsArePast ?? false) ? 'Geçmiş Etkinlikler' : 'Yaklaşan Etkinlikler' }}</h2>
 					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
 				</div>
 			</div>
@@ -372,7 +372,7 @@
 							<p class="text-gray-600 line-clamp-3 mb-6 leading-relaxed">
 								{{ Str::limit(strip_tags($event->description), 120) }}
 							</p>
-							<a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                            <a href="{{ route('events.show', $event->slug) }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 								<span>Detayları Gör</span>
 								<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
