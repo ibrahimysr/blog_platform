@@ -11,6 +11,7 @@ use App\Http\Controllers\PostsPageController;
 use App\Http\Controllers\PostDetailController;
 use App\Http\Controllers\EventsPageController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,11 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [RegisterController::class, 'show'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profil', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profil', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 Route::prefix('admin')->as('admin.')->group(function () {
     Route::middleware(['auth','admin'])->group(function () {

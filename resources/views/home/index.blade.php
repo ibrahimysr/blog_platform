@@ -8,6 +8,7 @@
 		$mediaList = $firstFeatured ? ($firstFeatured->media ?? collect()) : collect();
 		$hero = $mediaList->firstWhere('is_primary', true) ?? $mediaList->first();
 		$routePostsShow = \Illuminate\Support\Facades\Route::has('posts.show');
+		$activeCatId = request('category');
 	@endphp
 
 	{{-- HERO SECTION - Ultra Modern Design --}}
@@ -189,13 +190,13 @@
 				
 				{{-- Category Filter --}}
 				<div class="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
-					<button class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl text-sm font-bold whitespace-nowrap shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+					<a href="{{ url('/?') }}" class="px-6 py-3 rounded-2xl text-sm font-bold whitespace-nowrap shadow-lg transition-all duration-300 {{ $activeCatId ? 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105' : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-xl transform hover:scale-105' }}">
 						Tümü
-					</button>
+					</a>
 					@foreach($topCategories->take(5) as $cat)
-						<button class="px-6 py-3 bg-white text-gray-700 rounded-2xl text-sm font-bold whitespace-nowrap hover:bg-gray-900 hover:text-white transition-all duration-300 border-2 border-gray-200 hover:border-gray-900 transform hover:scale-105">
+						<a href="{{ url('/?category='.$cat->id) }}" class="px-6 py-3 rounded-2xl text-sm font-bold whitespace-nowrap transition-all duration-300 {{ (int)$activeCatId === (int)$cat->id ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-[1.03]' : 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105' }}">
 							{{ $cat->name }}
-						</button>
+						</a>
 					@endforeach
 				</div>
 
@@ -320,8 +321,8 @@
 							Kategoriler
 						</h3>
 						<div class="space-y-3">
-							@foreach($topCategories->take(6) as $cat)
-								<a href="#" class="group flex items-center justify-between p-4 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 border-2 border-transparent hover:border-purple-200">
+						@foreach($topCategories->take(6) as $cat)
+							<a href="{{ route('posts.list', ['category' => $cat->id]) }}" class="group flex items-center justify-between p-4 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 border-2 border-transparent hover:border-purple-200">
 									<span class="font-bold text-gray-700 group-hover:text-purple-600 transition-colors">
 										{{ $cat->name }}
 									</span>

@@ -256,7 +256,7 @@
                                 </svg>
                             </button>
                             <div id="user-menu" class="dropdown-menu hidden absolute right-0 mt-4 w-56 glass-effect rounded-2xl shadow-2xl py-2 border border-white/20 overflow-hidden">
-                                <a href="{{ route('login') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all">
+                                <a href="{{ route('profile.edit') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                                     </svg>
@@ -296,7 +296,7 @@
                         <a href="{{ route('login') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Giriş Yap</a>
                         <a href="{{ route('register') }}" class="btn-primary text-white px-4 py-3 rounded-lg text-center font-bold text-sm">Kayıt Ol</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Profilim</a>
+                        <a href="{{ route('profile.edit') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Profilim</a>
                         <a href="{{ route('admin.dashboard') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Yönetim Paneli</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

@@ -8,11 +8,12 @@ use App\Models\Event;
 use App\Models\Post;
 use App\Models\PostViewStat;
 use Illuminate\Support\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
         $featuredPosts = Post::with(['media', 'categories'])
             ->where('status', 1)
@@ -21,9 +22,15 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
-        $latestPosts = Post::with(['media', 'categories'])
-            ->where('status', 1)
-            ->orderByDesc('published_at')
+        $latestQuery = Post::with(['media', 'categories'])
+            ->where('status', 1);
+
+        if ($request->integer('category')) {
+            $categoryId = $request->integer('category');
+            $latestQuery->whereHas('categories', fn($q) => $q->where('categories.id', $categoryId));
+        }
+
+        $latestPosts = $latestQuery->orderByDesc('published_at')
             ->limit(8)
             ->get();
 
