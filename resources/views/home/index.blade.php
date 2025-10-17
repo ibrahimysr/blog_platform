@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'DETA - Dijital Demokrasi ve Toplum Araştırma Merkezi')
+@section('title', 'Deta - Dijital Demokrasi ve Toplum Araştırma Merkezi')
 
 @section('content')
 	@php
@@ -75,7 +75,7 @@
 					@else
 						<h1 class="text-6xl lg:text-8xl font-black text-gray-900">
 							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-								DETA
+								Deta
 							</span><br>
 							<span class="text-gray-900">Dijital Demokrasi ve Toplum Araştırma Merkezi</span>
 						</h1>
