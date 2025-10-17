@@ -12,6 +12,7 @@ use App\Http\Controllers\PostDetailController;
 use App\Http\Controllers\EventsPageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ Route::post('/yazilar/{post:slug}/yorum', [PostDetailController::class, 'storeCo
 Route::post('/yazilar/{post:slug}/reaksiyon', [PostDetailController::class, 'react'])->name('posts.react');
 Route::get('/etkinlikler', [EventsPageController::class, 'index'])->name('events.list');
 Route::get('/etkinlik/{event:slug}', [EventsPageController::class, 'show'])->name('events.show');
+Route::get('/galeri', [GalleryController::class, 'index'])->name('galleries.index');
+Route::get('/galeri/{gallery:slug}', [GalleryController::class, 'show'])->name('galleries.show');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
@@ -49,6 +52,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::resource('posts', PostController::class);
         Route::resource('categories', CategoryController::class)->except(['show']);
         Route::resource('events', EventController::class)->except(['show']);
+        Route::get('galleries', [GalleryController::class, 'adminIndex'])->name('galleries.index');
+        Route::resource('galleries', GalleryController::class)->except(['index']);
         Route::resource('users', UserController::class)->except(['show']);
     });
 });

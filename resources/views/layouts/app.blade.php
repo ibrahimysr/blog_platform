@@ -232,6 +232,7 @@
                 <div class="hidden md:flex items-center space-x-10">
                     <a href="/" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">ANA SAYFA</a>
                     <a href="{{ route('posts.list') }}" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">BLOGLAR</a>
+                    <a href="{{ route('galleries.index') }}" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">GALERİ</a>
                     <a href="{{ route('events.list') }}" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">ETKİNLİKLER</a>
                 </div>
 
@@ -291,6 +292,7 @@
                 <div class="flex flex-col space-y-2 mt-4">
                     <a href="/" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Ana Sayfa</a>
                     <a href="{{ route('posts.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Bloglar</a>
+                    <a href="{{ route('galleries.index') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Galeri</a>
                     <a href="{{ route('events.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Etkinlikler</a>
                     @guest
                         <a href="{{ route('login') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Giriş Yap</a>
