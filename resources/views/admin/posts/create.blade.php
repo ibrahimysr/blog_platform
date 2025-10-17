@@ -91,8 +91,9 @@
 					
 					<div>
 						<textarea name="content" 
+						          id="content-editor"
 						          rows="15" 
-						          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent font-mono text-sm @error('content') border-red-500 @enderror"
+						          class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent @error('content') border-red-500 @enderror"
 						          placeholder="Yazı içeriğini buraya girin...">{{ old('content') }}</textarea>
 						@error('content')
 							<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -311,6 +312,30 @@
 
 		document.querySelector('textarea[name="excerpt"]')?.addEventListener('input', function(e) {
 			document.getElementById('seo-desc').textContent = e.target.value || 'Yazı özeti buraya gelecek...';
+		});
+
+		// TinyMCE Editor
+		tinymce.init({
+			selector: '#content-editor',
+			height: 500,
+			menubar: false,
+			plugins: [
+				'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+				'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+				'insertdatetime', 'media', 'table', 'help', 'wordcount'
+			],
+			toolbar: 'undo redo | blocks | ' +
+				'bold italic backcolor | alignleft aligncenter ' +
+				'alignright alignjustify | bullist numlist outdent indent | ' +
+				'removeformat | help',
+			content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; }',
+			language: 'tr',
+			license_key: 'gpl',
+			setup: function (editor) {
+				editor.on('change', function () {
+					editor.save();
+				});
+			}
 		});
 	</script>
 @endsection

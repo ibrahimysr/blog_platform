@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\PostMedia;
 use App\Models\User;
+use App\Support\HtmlSanitizer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -37,7 +38,7 @@ class PostController extends Controller
             'title' => $data['title'],
             'slug' => $data['slug'],
             'excerpt' => $data['excerpt'] ?? null,
-            'content' => $data['content'],
+            'content' => HtmlSanitizer::sanitize($data['content']),
             'status' => $data['status'] ?? 0,
             'published_at' => $data['published_at'] ?? null,
             'is_featured' => $data['is_featured'] ?? false,
@@ -89,7 +90,7 @@ class PostController extends Controller
             'title' => $data['title'] ?? $post->title,
             'slug' => $data['slug'] ?? $post->slug,
             'excerpt' => array_key_exists('excerpt', $data) ? $data['excerpt'] : $post->excerpt,
-            'content' => $data['content'] ?? $post->content,
+            'content' => array_key_exists('content', $data) ? HtmlSanitizer::sanitize($data['content']) : $post->content,
             'status' => $data['status'] ?? $post->status,
             'published_at' => array_key_exists('published_at', $data) ? $data['published_at'] : $post->published_at,
             'is_featured' => array_key_exists('is_featured', $data) ? (bool)$data['is_featured'] : $post->is_featured,

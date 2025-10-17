@@ -6,6 +6,10 @@
 	<title>@yield('title', 'Admin Paneli')</title>
 	<script src="https://cdn.tailwindcss.com"></script>
 	@vite(['resources/css/app.css', 'resources/js/app.js'])
+	
+	<!-- TinyMCE Rich Text Editor - Self Hosted -->
+	<script src="https://cdn.jsdelivr.net/npm/tinymce@6.7.2/tinymce.min.js"></script>
+	
 	@yield('meta')
 </head>
 <body class="bg-gray-100">
