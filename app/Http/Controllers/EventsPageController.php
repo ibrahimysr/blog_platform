@@ -39,10 +39,10 @@ class EventsPageController extends Controller
         return view('events.index', compact('upcomingEvents', 'pastEvents', 'categories'));
     }
 
-    public function show(\App\Models\Event $event): View
+    public function show(Event $event): View
     {
         $event->load(['category', 'user']);
-        $related = \App\Models\Event::where('status', 1)
+        $related = Event::where('status', 1)
             ->where('id', '!=', $event->id)
             ->where('event_date', '>=', now()->subMonths(1))
             ->orderBy('event_date')

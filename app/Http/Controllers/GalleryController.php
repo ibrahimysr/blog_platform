@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 
 class GalleryController extends Controller
 {
-    // Public gallery index
     public function index(Request $request): View
     {
         $query = Gallery::with(['category', 'user'])
@@ -47,7 +46,6 @@ class GalleryController extends Controller
         return view('galleries.index', compact('galleries', 'categories', 'activeCategory'));
     }
 
-    // Admin gallery index
     public function adminIndex(Request $request): View
     {
         $query = Gallery::with(['category', 'user']);
@@ -91,7 +89,6 @@ class GalleryController extends Controller
         return view('galleries.show', compact('gallery', 'relatedGalleries'));
     }
 
-    // Admin methods
 
     public function create(): View
     {
@@ -119,12 +116,10 @@ class GalleryController extends Controller
         $data['user_id'] = auth()->id();
         $data['slug'] = $data['title'] ? Str::slug($data['title']) : 'gallery-' . time();
 
-        // Handle image upload/URL
         if ($data['image_type'] === 'upload' && $request->hasFile('image_file')) {
             $publicPath = $_SERVER['DOCUMENT_ROOT'];
             $galleryDir = $publicPath . '/gallery_images';
             
-            // Create directory if not exists
             if (!file_exists($galleryDir)) {
                 mkdir($galleryDir, 0755, true);
             }
@@ -134,12 +129,10 @@ class GalleryController extends Controller
             $data['image_path'] = 'gallery_images/' . $filename;
         }
 
-        // Handle thumbnail upload/URL
         if ($request->hasFile('thumbnail_file')) {
             $publicPath = $_SERVER['DOCUMENT_ROOT'];
             $thumbnailDir = $publicPath . '/gallery_thumbnails';
             
-            // Create directory if not exists
             if (!file_exists($thumbnailDir)) {
                 mkdir($thumbnailDir, 0755, true);
             }
@@ -149,7 +142,6 @@ class GalleryController extends Controller
             $data['thumbnail_path'] = 'gallery_thumbnails/' . $filename;
         }
 
-        // Remove file fields from data
         unset($data['image_file'], $data['thumbnail_file']);
 
         Gallery::create($data);
@@ -182,7 +174,6 @@ class GalleryController extends Controller
 
         $data['slug'] = $data['title'] ? Str::slug($data['title']) : 'gallery-' . time();
 
-        // Handle image upload/URL
         if ($data['image_type'] === 'upload' && $request->hasFile('image_file')) {
             // Delete old image
             if ($gallery->image_path) {
@@ -196,7 +187,6 @@ class GalleryController extends Controller
             $publicPath = $_SERVER['DOCUMENT_ROOT'];
             $galleryDir = $publicPath . '/gallery_images';
             
-            // Create directory if not exists
             if (!file_exists($galleryDir)) {
                 mkdir($galleryDir, 0755, true);
             }
@@ -208,7 +198,6 @@ class GalleryController extends Controller
             $data['image_path'] = null;
         }
 
-        // Handle thumbnail upload/URL
         if ($request->hasFile('thumbnail_file')) {
             // Delete old thumbnail
             if ($gallery->thumbnail_path) {
@@ -222,7 +211,6 @@ class GalleryController extends Controller
             $publicPath = $_SERVER['DOCUMENT_ROOT'];
             $thumbnailDir = $publicPath . '/gallery_thumbnails';
             
-            // Create directory if not exists
             if (!file_exists($thumbnailDir)) {
                 mkdir($thumbnailDir, 0755, true);
             }
@@ -232,7 +220,6 @@ class GalleryController extends Controller
             $data['thumbnail_path'] = 'gallery_thumbnails/' . $filename;
         }
 
-        // Remove file fields from data
         unset($data['image_file'], $data['thumbnail_file']);
 
         $gallery->update($data);
@@ -242,7 +229,6 @@ class GalleryController extends Controller
 
     public function destroy(Gallery $gallery): RedirectResponse
     {
-        // Delete files
         if ($gallery->image_path) {
             Storage::disk('public')->delete($gallery->image_path);
         }

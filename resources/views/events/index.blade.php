@@ -5,14 +5,13 @@
 @section('content')
 	{{-- Hero Section --}}
 	<div class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 rounded-3xl p-8 md:p-16 mb-12 overflow-hidden">
-		{{-- Animated Background Elements --}}
+		
 		<div class="absolute inset-0 opacity-20">
 			<div class="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-[100px] animate-pulse"></div>
 			<div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
 			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-500 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
 		</div>
 
-		{{-- Grid Pattern Overlay --}}
 		<div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
 		
 		<div class="relative z-10">

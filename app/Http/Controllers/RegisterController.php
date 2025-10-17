@@ -31,7 +31,6 @@ class RegisterController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        // attach default 'user' role if roles exist
         $role = Role::where('name', 'user')->first();
         if ($role) {
             $user->roles()->sync([$role->id]);

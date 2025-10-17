@@ -290,7 +290,6 @@
     <script>
         let mediaIndex = {{ $post->media->count() }};
 
-        // Add media button handler
         document.getElementById('add-media').addEventListener('click', function () {
             const mediaList = document.getElementById('media-list');
             const emptyState = document.getElementById('media-empty');
@@ -371,7 +370,6 @@
             }
         }
 
-        // SEO Preview updates
         document.querySelector('input[name="title"]')?.addEventListener('input', function(e) {
             document.getElementById('seo-title').textContent = e.target.value || 'Yazı Başlığı';
         });
@@ -385,7 +383,6 @@
             document.getElementById('seo-desc').textContent = e.target.value || 'Yazı özeti buraya gelecek...';
         });
 
-        // TinyMCE Editor
         tinymce.init({
             selector: '#content-editor',
             height: 500,

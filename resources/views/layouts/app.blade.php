@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Blog')</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @yield('meta')
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -298,8 +297,13 @@
                         <a href="{{ route('login') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Giriş Yap</a>
                         <a href="{{ route('register') }}" class="btn-primary text-white px-4 py-3 rounded-lg text-center font-bold text-sm">Kayıt Ol</a>
                     @else
+                        <div class="flex items-center space-x-3 py-3 px-4">
+                            <div class="avatar-ring w-8 h-8 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                                {{ substr(Auth::user()->name, 0, 1) }}
+                            </div>
+                            <span class="font-semibold text-sm text-gray-700">{{ Auth::user()->name }}</span>
+                        </div>
                         <a href="{{ route('profile.edit') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Profilim</a>
-                        <a href="{{ route('admin.dashboard') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Yönetim Paneli</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="text-red-600 hover:bg-red-50 py-3 px-4 rounded-lg w-full text-left font-semibold text-sm transition-all">Çıkış Yap</button>

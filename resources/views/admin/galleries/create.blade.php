@@ -198,7 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     imageTypeOptions.forEach(option => {
         option.addEventListener('change', function() {
-            // Update visual selection
             document.querySelectorAll('.image-type-option').forEach(div => {
                 div.classList.remove('border-blue-500', 'bg-blue-50');
                 div.classList.add('border-gray-200');
@@ -212,7 +211,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Initialize
     toggleFields();
 });
 </script>

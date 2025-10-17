@@ -34,7 +34,6 @@ class ProfileController extends Controller
             $user->password = Hash::make($validated['password']);
         }
 
-        // Avatar seçim alanı kaldırıldı; mevcut avatar korunur
 
         $user->save();
 

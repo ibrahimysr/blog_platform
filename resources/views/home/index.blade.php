@@ -11,7 +11,7 @@
 		$activeCatId = request('category');
 	@endphp
 
-	{{-- HERO SECTION - Ultra Modern Design --}}
+	{{-- HERO SECTION --}}
 	<section class="relative -mt-8 mb-24 overflow-hidden">
 		<div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 opacity-60"></div>
 		<div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
@@ -101,7 +101,7 @@
 		</div>
 	</section>
 
-	{{-- FEATURED ARTICLES - Bento Grid Style --}}
+	{{-- FEATURED ARTICLES --}}
 	@if($featuredPosts->count() > 1)
 		<section class="container mx-auto px-4 mb-32">
 			<div class="flex items-center justify-between mb-12">
@@ -383,7 +383,6 @@
 					</div>
 				@endif
 
-				{{-- Newsletter removed per request --}}
 			</div>
 		</div>
 	</section>

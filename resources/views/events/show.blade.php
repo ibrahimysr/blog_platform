@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50">
-	{{-- Animated Background Elements --}}
 	<div class="fixed inset-0 overflow-hidden pointer-events-none">
 		<div class="absolute top-20 left-10 w-72 h-72 bg-purple-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
 		<div class="absolute top-40 right-10 w-72 h-72 bg-pink-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
@@ -13,7 +12,6 @@
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         @php $hasSidebar = isset($event->user) && $event->user ? true : false; $hasSidebar = $hasSidebar || ($related->count() > 0); @endphp
-		{{-- Breadcrumb --}}
 		<nav class="flex items-center gap-2 text-sm mb-6 backdrop-blur-sm">
 			<a href="{{ route('home') }}" class="text-gray-600 hover:text-purple-600 transition-all duration-300 hover:scale-105">Ana Sayfa</a>
 			<svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -31,7 +29,6 @@
             <div class="{{ $hasSidebar ? 'lg:col-span-8' : 'lg:col-span-12' }}">
 				{{-- Hero Card --}}
 				<article class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 hover:shadow-purple-500/10 transition-all duration-500">
-					{{-- Featured Image with Overlay --}}
 					@if($event->media_url)
 						<div class="relative h-[450px] overflow-hidden group">
 							<img src="{{ $event->media_url }}" 
@@ -272,7 +269,6 @@
 					</div>
                 @endif
 
-                {{-- Removed calendar section per request --}}
             </aside>
             @endif
 		</div>
