@@ -46,7 +46,7 @@ class Gallery extends Model
         if ($this->image_type === 'url') {
             return $this->image_url;
         }
-        return $this->image_path ? asset('storage/' . $this->image_path) : null;
+        return $this->image_path ? asset($this->image_path) : null;
     }
 
     public function getThumbnailAttribute()
@@ -54,7 +54,7 @@ class Gallery extends Model
         if ($this->image_type === 'url') {
             return $this->thumbnail_url ?: $this->image_url;
         }
-        return $this->thumbnail_path ? asset('storage/' . $this->thumbnail_path) : $this->image;
+        return $this->thumbnail_path ? asset($this->thumbnail_path) : $this->image;
     }
 
     public function getRouteKeyName()

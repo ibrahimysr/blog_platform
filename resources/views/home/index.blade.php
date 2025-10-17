@@ -387,6 +387,51 @@
 		</section>
 	@endif
 
+	{{-- FEATURED GALLERY SECTION --}}
+	@if($featuredGalleries->isNotEmpty())
+		<section class="container mx-auto px-4 mb-20">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+					Öne Çıkan Fotoğraflar
+				</h2>
+				<p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+					En güzel anları yakaladığımız fotoğraflarımızı keşfedin
+				</p>
+			</div>
+			
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+				@foreach($featuredGalleries as $gallery)
+					<div class="group relative aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+						<img 
+							src="{{ $gallery->thumbnail ?: $gallery->image }}" 
+							alt="{{ $gallery->alt_text ?: $gallery->title ?: 'Galeri Fotoğrafı' }}"
+							class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+						>
+						<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+						<div class="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+							@if($gallery->title)
+								<h3 class="font-bold text-sm line-clamp-1">{{ $gallery->title }}</h3>
+							@endif
+							@if($gallery->category)
+								<p class="text-xs text-blue-200 mt-1">{{ $gallery->category->name }}</p>
+							@endif
+						</div>
+						<a href="{{ route('galleries.show', $gallery->slug) }}" class="absolute inset-0 z-10"></a>
+					</div>
+				@endforeach
+			</div>
+			
+			<div class="text-center mt-12">
+				<a href="{{ route('galleries.index') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+					<span>Tüm Galeriyi Gör</span>
+					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+					</svg>
+				</a>
+			</div>
+		</section>
+	@endif
+
 	{{-- RECENT COMMENTS --}}
 	@if($recentComments->count())
 		<section class="container mx-auto px-4 mb-32">

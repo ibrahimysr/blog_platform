@@ -121,12 +121,32 @@ class GalleryController extends Controller
 
         // Handle image upload/URL
         if ($data['image_type'] === 'upload' && $request->hasFile('image_file')) {
-            $data['image_path'] = $request->file('image_file')->store('galleries', 'public');
+            $publicPath = $_SERVER['DOCUMENT_ROOT'];
+            $galleryDir = $publicPath . '/gallery_images';
+            
+            // Create directory if not exists
+            if (!file_exists($galleryDir)) {
+                mkdir($galleryDir, 0755, true);
+            }
+            
+            $filename = time() . '_' . $request->file('image_file')->getClientOriginalName();
+            $request->file('image_file')->move($galleryDir, $filename);
+            $data['image_path'] = 'gallery_images/' . $filename;
         }
 
         // Handle thumbnail upload/URL
         if ($request->hasFile('thumbnail_file')) {
-            $data['thumbnail_path'] = $request->file('thumbnail_file')->store('galleries/thumbnails', 'public');
+            $publicPath = $_SERVER['DOCUMENT_ROOT'];
+            $thumbnailDir = $publicPath . '/gallery_thumbnails';
+            
+            // Create directory if not exists
+            if (!file_exists($thumbnailDir)) {
+                mkdir($thumbnailDir, 0755, true);
+            }
+            
+            $filename = time() . '_thumb_' . $request->file('thumbnail_file')->getClientOriginalName();
+            $request->file('thumbnail_file')->move($thumbnailDir, $filename);
+            $data['thumbnail_path'] = 'gallery_thumbnails/' . $filename;
         }
 
         // Remove file fields from data
@@ -166,9 +186,24 @@ class GalleryController extends Controller
         if ($data['image_type'] === 'upload' && $request->hasFile('image_file')) {
             // Delete old image
             if ($gallery->image_path) {
-                Storage::disk('public')->delete($gallery->image_path);
+                $publicPath = $_SERVER['DOCUMENT_ROOT'];
+                $oldImagePath = $publicPath . '/' . $gallery->image_path;
+                if (file_exists($oldImagePath)) {
+                    @unlink($oldImagePath);
+                }
             }
-            $data['image_path'] = $request->file('image_file')->store('galleries', 'public');
+            
+            $publicPath = $_SERVER['DOCUMENT_ROOT'];
+            $galleryDir = $publicPath . '/gallery_images';
+            
+            // Create directory if not exists
+            if (!file_exists($galleryDir)) {
+                mkdir($galleryDir, 0755, true);
+            }
+            
+            $filename = time() . '_' . $request->file('image_file')->getClientOriginalName();
+            $request->file('image_file')->move($galleryDir, $filename);
+            $data['image_path'] = 'gallery_images/' . $filename;
         } elseif ($data['image_type'] === 'url') {
             $data['image_path'] = null;
         }
@@ -177,9 +212,24 @@ class GalleryController extends Controller
         if ($request->hasFile('thumbnail_file')) {
             // Delete old thumbnail
             if ($gallery->thumbnail_path) {
-                Storage::disk('public')->delete($gallery->thumbnail_path);
+                $publicPath = $_SERVER['DOCUMENT_ROOT'];
+                $oldThumbPath = $publicPath . '/' . $gallery->thumbnail_path;
+                if (file_exists($oldThumbPath)) {
+                    @unlink($oldThumbPath);
+                }
             }
-            $data['thumbnail_path'] = $request->file('thumbnail_file')->store('galleries/thumbnails', 'public');
+            
+            $publicPath = $_SERVER['DOCUMENT_ROOT'];
+            $thumbnailDir = $publicPath . '/gallery_thumbnails';
+            
+            // Create directory if not exists
+            if (!file_exists($thumbnailDir)) {
+                mkdir($thumbnailDir, 0755, true);
+            }
+            
+            $filename = time() . '_thumb_' . $request->file('thumbnail_file')->getClientOriginalName();
+            $request->file('thumbnail_file')->move($thumbnailDir, $filename);
+            $data['thumbnail_path'] = 'gallery_thumbnails/' . $filename;
         }
 
         // Remove file fields from data

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Event;
+use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\PostViewStat;
 use Illuminate\Support\Carbon;
@@ -77,6 +78,13 @@ class HomeController extends Controller
             ->limit(5)
             ->get();
 
+        $featuredGalleries = Gallery::with(['category', 'user'])
+            ->where('status', 1)
+            ->where('is_featured', true)
+            ->orderByDesc('created_at')
+            ->limit(6)
+            ->get();
+
         return view('home.index', compact(
             'featuredPosts',
             'latestPosts',
@@ -84,7 +92,8 @@ class HomeController extends Controller
             'topCategories',
             'upcomingEvents',
             'recentComments',
-            'eventsArePast'
+            'eventsArePast',
+            'featuredGalleries'
         ));
     }
 }
