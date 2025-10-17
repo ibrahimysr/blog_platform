@@ -107,10 +107,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                 {{-- Title --}}
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-bold text-gray-700 mb-2">Başlık</label>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Başlık <span class="text-gray-500 font-normal">(Opsiyonel)</span></label>
                     <input type="text" name="title" value="{{ old('title', $gallery->title) }}"
                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
-                           placeholder="Fotoğraf başlığı">
+                           placeholder="Fotoğraf başlığı (boş bırakabilirsiniz)">
                     @error('title')
                         <p class="text-red-600 text-sm mt-1">{{ $message }}</p>
                     @enderror

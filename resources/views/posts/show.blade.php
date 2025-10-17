@@ -58,15 +58,6 @@
 								
 								{{-- Meta Info --}}
 								<div class="flex flex-wrap items-center gap-4 text-white/90">
-									@if($post->user)
-										<div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
-											<div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
-												{{ substr($post->user->name, 0, 1) }}
-											</div>
-											<span class="font-semibold">{{ $post->user->name }}</span>
-										</div>
-									@endif
-									
 									<div class="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full">
 										<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>

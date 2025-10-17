@@ -32,8 +32,8 @@ class HomeController extends Controller
         }
 
         $latestPosts = $latestQuery->orderByDesc('published_at')
-            ->limit(8)
-            ->get();
+            ->paginate(5)
+            ->withQueryString();
 
         $sinceDate = now()->subDays(30)->toDateString();
         $popularStats = PostViewStat::selectRaw('post_id, SUM(views) as total_views')
@@ -54,6 +54,7 @@ class HomeController extends Controller
             ->values();
 
         $topCategories = Category::withCount('posts')
+            ->having('posts_count', '>', 0)
             ->orderByDesc('posts_count')
             ->limit(5)
             ->get();

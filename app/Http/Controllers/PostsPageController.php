@@ -42,6 +42,7 @@ class PostsPageController extends Controller
         $posts = $query->paginate(12)->withQueryString();
 
         $categories = Category::withCount('posts')
+            ->having('posts_count', '>', 0)
             ->orderByDesc('posts_count')
             ->limit(8)
             ->get();

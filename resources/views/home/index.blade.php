@@ -42,13 +42,10 @@
 						
 						<div class="flex flex-wrap items-center gap-6">
 							<div class="flex items-center space-x-2 text-gray-600">
-								<div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-									{{ substr($firstFeatured->author->name ?? 'A', 0, 1) }}
-								</div>
-								<div>
-									<p class="font-semibold text-sm">{{ $firstFeatured->author->name ?? 'Admin' }}</p>
-									<p class="text-xs text-gray-500">{{ $firstFeatured->published_at?->format('d M Y') }}</p>
-								</div>
+								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+								</svg>
+								<span class="text-sm font-medium">{{ $firstFeatured->published_at?->format('d M Y') }}</span>
 							</div>
 							@if(isset($firstFeatured->reading_time))
 								<div class="flex items-center space-x-2 text-gray-600">
@@ -269,6 +266,56 @@
 						</div>
 					@endforelse
 				</div>
+
+				{{-- Pagination --}}
+				@if($latestPosts->hasPages())
+					<div class="mt-12 flex justify-center">
+						<div class="flex items-center space-x-2">
+							{{-- Previous Page --}}
+							@if($latestPosts->onFirstPage())
+								<span class="px-4 py-2 bg-gray-100 text-gray-400 rounded-lg cursor-not-allowed">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+									</svg>
+								</span>
+							@else
+								<a href="{{ $latestPosts->previousPageUrl() }}" class="px-4 py-2 bg-white text-gray-700 border-2 border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 transform hover:scale-105">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+									</svg>
+								</a>
+							@endif
+
+							{{-- Page Numbers --}}
+							@foreach($latestPosts->getUrlRange(1, $latestPosts->lastPage()) as $page => $url)
+								@if($page == $latestPosts->currentPage())
+									<span class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-bold shadow-lg">
+										{{ $page }}
+									</span>
+								@else
+									<a href="{{ $url }}" class="px-4 py-2 bg-white text-gray-700 border-2 border-gray-200 rounded-lg hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 transform hover:scale-105">
+										{{ $page }}
+									</a>
+								@endif
+							@endforeach
+
+							{{-- Next Page --}}
+							@if($latestPosts->hasMorePages())
+								<a href="{{ $latestPosts->nextPageUrl() }}" class="px-4 py-2 bg-white text-gray-700 border-2 border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 transform hover:scale-105">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+									</svg>
+								</a>
+							@else
+								<span class="px-4 py-2 bg-gray-100 text-gray-400 rounded-lg cursor-not-allowed">
+									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+									</svg>
+								</span>
+							@endif
+						</div>
+					</div>
+				@endif
 			</div>
 
 			{{-- Sidebar --}}

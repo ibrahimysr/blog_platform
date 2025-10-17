@@ -222,18 +222,6 @@
 								</div>
 							</div>
 
-							{{-- Author --}}
-							@if($post->user)
-								<div class="flex items-center gap-3 mt-5 pt-5 border-t-2 border-gray-100">
-									<div class="w-10 h-10 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white text-sm font-black shadow-lg">
-										{{ substr($post->user->name, 0, 1) }}
-									</div>
-									<div>
-										<span class="text-sm font-bold text-gray-900 block">{{ $post->user->name }}</span>
-										<span class="text-xs text-gray-500">Yazar</span>
-									</div>
-								</div>
-							@endif
 						</div>
 					</article>
 				@empty
