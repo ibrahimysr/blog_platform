@@ -277,23 +277,6 @@
 				</div>
 			@endif
 
-			{{-- Popular Tags --}}
-			<div class="bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 rounded-2xl p-6 border-2 border-blue-500/20 shadow-xl relative overflow-hidden">
-				<div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-				<div class="relative z-10">
-					<h3 class="text-lg font-black text-white mb-5 flex items-center gap-2">
-						<span class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse"></span>
-						Popüler Etiketler
-					</h3>
-					<div class="flex flex-wrap gap-2">
-						<span class="px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-xs font-bold text-white hover:bg-white/20 hover:scale-105 cursor-pointer transition-all duration-300">#teknoloji</span>
-						<span class="px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-xs font-bold text-white hover:bg-white/20 hover:scale-105 cursor-pointer transition-all duration-300">#yazılım</span>
-						<span class="px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-xs font-bold text-white hover:bg-white/20 hover:scale-105 cursor-pointer transition-all duration-300">#tasarım</span>
-						<span class="px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-xs font-bold text-white hover:bg-white/20 hover:scale-105 cursor-pointer transition-all duration-300">#pazarlama</span>
-						<span class="px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl text-xs font-bold text-white hover:bg-white/20 hover:scale-105 cursor-pointer transition-all duration-300">#yapay-zeka</span>
-					</div>
-				</div>
-			</div>
 		</aside>
 	</div>
 
