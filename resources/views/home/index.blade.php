@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Ana Sayfa - En İyi İçerikler')
+@section('title', 'DETA - Dijital Demokrasi ve Toplum Araştırma Merkezi')
 
 @section('content')
 	@php
@@ -78,12 +78,12 @@
 					@else
 						<h1 class="text-6xl lg:text-8xl font-black text-gray-900">
 							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
-								İlham Veren
+								DETA
 							</span><br>
-							<span class="text-gray-900">İçerikler</span>
+							<span class="text-gray-900">Dijital Demokrasi ve Toplum Araştırma Merkezi</span>
 						</h1>
 						<p class="text-2xl text-gray-600">
-							Keşfet, öğren ve büyü. En güncel trendler ve uzman görüşleri bir arada.
+							Dijital çağda demokrasi ve toplum araştırmalarına odaklanan, yenilikçi çözümler üreten araştırma merkezi.
 						</p>
 					@endif
 				</div>
