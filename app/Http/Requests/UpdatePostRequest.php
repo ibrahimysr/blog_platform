@@ -39,7 +39,7 @@ class UpdatePostRequest extends FormRequest
             'media.*.url' => 'required|string|max:2048',
             'media.*.alt' => 'nullable|string|max:255',
             'media.*.caption' => 'nullable|string|max:255',
-            'media.*.is_primary' => 'nullable|boolean',
+            'media.*.is_primary' => 'nullable|in:0,1,true,false,on,off',
             'media.*.sort_order' => 'nullable|integer|min:0',
         ];
     }

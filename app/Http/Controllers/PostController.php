@@ -56,7 +56,7 @@ class PostController extends Controller
                     'alt' => $m['alt'] ?? null,
                     'caption' => $m['caption'] ?? null,
                     'sort_order' => $m['sort_order'] ?? 0,
-                    'is_primary' => $m['is_primary'] ?? false,
+                    'is_primary' => filter_var($m['is_primary'] ?? false, FILTER_VALIDATE_BOOLEAN),
                 ];
             }, $data['media']);
             $post->media()->createMany($mediaRecords);
@@ -110,7 +110,7 @@ class PostController extends Controller
                         'alt' => $m['alt'] ?? null,
                         'caption' => $m['caption'] ?? null,
                         'sort_order' => $m['sort_order'] ?? 0,
-                        'is_primary' => $m['is_primary'] ?? false,
+                        'is_primary' => filter_var($m['is_primary'] ?? false, FILTER_VALIDATE_BOOLEAN),
                     ];
                 }, $data['media']);
                 $post->media()->createMany($mediaRecords);
