@@ -20,7 +20,7 @@
 			
 			<nav class="mt-6">
 				<a href="{{ route('admin.posts.index') }}" 
-				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.posts.*') ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-transparent' }}">
+				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.posts.*') ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-transparent' }}">
 					<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 					</svg>
@@ -28,7 +28,7 @@
 				</a>
 				
 				<a href="{{ route('admin.categories.index') }}" 
-				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.categories.*') ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-transparent' }}">
+				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.categories.*') ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-transparent' }}">
 					<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
 					</svg>
@@ -36,7 +36,7 @@
 				</a>
 				
 				<a href="{{ route('admin.events.index') }}" 
-				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.events.*') ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-transparent' }}">
+				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.events.*') ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-transparent' }}">
 					<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 					</svg>
@@ -44,14 +44,14 @@
 				</a>
 				
 				<a href="/admin/galleries" 
-				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.galleries.*') ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-transparent' }}">
+				   class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.galleries.*') ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-transparent' }}">
 					<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 					</svg>
 					Galeri
 				</a>
 				
-				<a href="{{ route('admin.users.index') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.users.*') ? 'border-blue-500 bg-blue-50 text-blue-700' : 'border-transparent' }}">
+				<a href="{{ route('admin.users.index') }}" class="flex items-center px-6 py-3 text-gray-700 hover:bg-gray-50 hover:text-gray-900 border-l-4 {{ request()->routeIs('admin.users.*') ? 'border-blue-600 bg-blue-50 text-blue-700' : 'border-transparent' }}">
 					<svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
 					</svg>
@@ -82,7 +82,7 @@
 						<div class="relative">
 							<input type="search" 
 							       placeholder="Search..." 
-							       class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+							       class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600">
 							<svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
 							</svg>
@@ -98,7 +98,7 @@
 						</button>
 						
 						<div class="flex items-center space-x-3">
-							<img src="https://ui-avatars.com/api/?name={{ Auth::user()->name ?? 'Admin' }}&background=3b82f6&color=fff" 
+							<img src="https://ui-avatars.com/api/?name={{ Auth::user()->name ?? 'Admin' }}&background=1877F2&color=fff" 
 							     class="w-10 h-10 rounded-full" 
 							     alt="Profile">
 							<div class="hidden md:block">

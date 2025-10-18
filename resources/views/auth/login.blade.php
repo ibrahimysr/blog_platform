@@ -8,7 +8,7 @@
         <!-- Login Card -->
         <div class="glass-effect rounded-3xl shadow-2xl overflow-hidden border border-white/20">
             <!-- Header -->
-            <div class="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 px-8 py-10 text-center relative overflow-hidden">
+            <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-10 text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-black/10"></div>
                 <div class="relative z-10">
                     <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-4 logo-glow">
@@ -49,7 +49,7 @@
                                 name="email" 
                                 value="{{ old('email') }}" 
                                 required
-                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300"
+                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-all duration-300"
                                 placeholder="ornek@email.com"
                             />
                         </div>
@@ -68,7 +68,7 @@
                                 type="password" 
                                 name="password" 
                                 required
-                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300"
+                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-all duration-300"
                                 placeholder="••••••••"
                             />
                         </div>
@@ -77,8 +77,8 @@
                     <!-- Remember Me & Forgot Password -->
                     <div class="flex items-center justify-between">
                         <label class="flex items-center space-x-2 cursor-pointer group">
-                            <input type="checkbox" name="remember" class="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500 focus:ring-2 transition-all">
-                            <span class="text-sm font-medium text-gray-600 group-hover:text-purple-600 transition-colors">Beni Hatırla</span>
+                            <input type="checkbox" name="remember" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 transition-all">
+                            <span class="text-sm font-medium text-gray-600 group-hover:text-blue-600 transition-colors">Beni Hatırla</span>
                         </label>
                     </div>
 
@@ -108,7 +108,7 @@
                 <div class="mt-8 text-center">
                     <p class="text-gray-600 font-medium">
                         Hesabınız yok mu? 
-                        <a href="{{ route('register') }}" class="text-purple-600 font-bold hover:text-purple-700 transition-colors hover:underline">
+                        <a href="{{ route('register') }}" class="text-blue-600 font-bold hover:text-blue-700 transition-colors hover:underline">
                             Hemen Kayıt Olun
                         </a>
                     </p>
@@ -120,8 +120,8 @@
         <div class="mt-8 text-center">
             <p class="text-sm text-gray-500">
                 Giriş yaparak 
-                <a href="#" class="text-purple-600 hover:underline font-semibold">Kullanım Şartları</a> ve 
-                <a href="#" class="text-purple-600 hover:underline font-semibold">Gizlilik Politikası</a>'nı kabul etmiş olursunuz.
+                <a href="#" class="text-blue-600 hover:underline font-semibold">Kullanım Şartları</a> ve 
+                <a href="#" class="text-blue-600 hover:underline font-semibold">Gizlilik Politikası</a>'nı kabul etmiş olursunuz.
             </p>
         </div>
     </div>

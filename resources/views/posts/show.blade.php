@@ -3,11 +3,11 @@
 @section('title', $post->title)
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-blue-50">
 	<div class="fixed inset-0 overflow-hidden pointer-events-none">
 		<div class="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-		<div class="absolute top-40 right-10 w-72 h-72 bg-purple-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-		<div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+		<div class="absolute top-40 right-10 w-72 h-72 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+		<div class="absolute bottom-20 left-1/2 w-72 h-72 bg-blue-300/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
 	</div>
 
 	<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -88,7 +88,7 @@
 					<div class="p-8 md:p-12">
 						{{-- Excerpt --}}
 						@if($post->excerpt)
-							<div class="relative mb-8 p-6 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+							<div class="relative mb-8 p-6 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 rounded-2xl border-l-4 border-blue-500 shadow-sm">
 								<div class="absolute top-4 right-4 text-blue-200">
 									<svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
 										<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
@@ -102,7 +102,7 @@
 						<div class="flex items-center justify-between mb-8 p-4 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl">
 							<div class="flex items-center gap-4">
 								<div class="flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow-sm">
-									<svg class="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="currentColor">
+									<svg class="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
 										<path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/>
 									</svg>
 									<span class="font-bold text-gray-900">{{ $post->likes_count ?? 0 }}</span>
@@ -120,7 +120,7 @@
 									<form method="POST" action="{{ route('posts.react', $post) }}">
 										@csrf
 										<input type="hidden" name="value" value="1">
-										<button class="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+										<button class="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 											<svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
 												<path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/>
 											</svg>
@@ -130,7 +130,7 @@
 									<form method="POST" action="{{ route('posts.react', $post) }}">
 										@csrf
 										<input type="hidden" name="value" value="-1">
-										<button class="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-rose-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+										<button class="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 											<svg class="w-5 h-5 rotate-180 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
 												<path d="M14 9V5a3 3 0 10-6 0v4H5a1 1 0 00-1 1v9a1 1 0 001 1h10a3 3 0 003-3v-6a1 1 0 00-1-1h-3z"/>
 											</svg>
@@ -139,7 +139,7 @@
 									</form>
 								</div>
 							@else
-								<a href="{{ route('login') }}" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+								<a href="{{ route('login') }}" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 									Oy vermek için giriş yap
 								</a>
 							@endif
@@ -154,7 +154,7 @@
 						@if($post->media->count() > 1)
 							<div class="mt-12 pt-12 border-t border-gray-200">
 								<h3 class="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
-									<span class="w-1.5 h-8 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></span>
+									<span class="w-1.5 h-8 bg-gradient-to-b from-blue-600 to-blue-700 rounded-full"></span>
 									Galeri
 								</h3>
 								<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -179,13 +179,13 @@
 						@if($post->categories->isNotEmpty())
 							<div class="mt-12 pt-12 border-t border-gray-200">
 								<h3 class="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
-									<span class="w-1.5 h-8 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></span>
+									<span class="w-1.5 h-8 bg-gradient-to-b from-blue-600 to-blue-700 rounded-full"></span>
 									Kategoriler
 								</h3>
 								<div class="flex flex-wrap gap-3">
 									@foreach($post->categories as $category)
 										<a href="{{ route('posts.list', ['category' => $category->id]) }}" 
-										   class="group px-6 py-3 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-600 hover:to-purple-600 text-gray-700 hover:text-white rounded-full font-semibold shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+										   class="group px-6 py-3 bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-600 hover:to-blue-700 text-gray-700 hover:text-white rounded-full font-semibold shadow-md hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
 											<span class="flex items-center gap-2">
 												<span class="w-2 h-2 bg-blue-600 group-hover:bg-white rounded-full"></span>
 												{{ $category->name }}
@@ -201,9 +201,9 @@
 				{{-- Comments Section --}}
 				<div class="mt-8 bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8 md:p-12">
 					<h3 class="text-3xl font-black text-gray-900 mb-8 flex items-center gap-3">
-						<span class="w-1.5 h-10 bg-gradient-to-b from-blue-600 to-purple-600 rounded-full"></span>
+						<span class="w-1.5 h-10 bg-gradient-to-b from-blue-600 to-blue-700 rounded-full"></span>
 						Yorumlar
-						<span class="ml-2 px-4 py-1 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-lg rounded-full font-bold">
+						<span class="ml-2 px-4 py-1 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-lg rounded-full font-bold">
 							{{ $post->comments->where('status',1)->count() }}
 						</span>
 					</h3>
@@ -213,7 +213,7 @@
 							@foreach($post->comments->where('status', 1) as $comment)
 								<div class="group bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100">
 									<div class="flex items-start gap-4">
-										<div class="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+										<div class="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-xl flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
 											{{ substr($comment->user->name, 0, 1) }}
 										</div>
 										<div class="flex-1 min-w-0">
@@ -242,7 +242,7 @@
 					@endif
 
 					@if(auth()->check())
-						<form method="POST" action="{{ route('posts.comment.store', $post) }}" class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg border border-white">
+						<form method="POST" action="{{ route('posts.comment.store', $post) }}" class="bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 rounded-2xl p-6 shadow-lg border border-white">
 							@csrf
 							<label class="block text-sm font-bold text-gray-700 mb-3 flex items-center gap-2">
 								<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -259,7 +259,7 @@
 								@else
 									<span></span>
 								@endif
-								<button class="group px-8 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-xl font-bold shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+								<button class="group px-8 py-3 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white rounded-xl font-bold shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
 									<span>Gönder</span>
 									<svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -268,7 +268,7 @@
 							</div>
 						</form>
 					@else
-						<div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-6 rounded-2xl shadow-xl text-center">
+						<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-6 rounded-2xl shadow-xl text-center">
 							<p class="text-lg font-semibold mb-3">Yorum yapmak için giriş yapmalısın</p>
 							<a href="{{ route('login') }}" class="inline-block px-8 py-3 bg-white text-blue-600 rounded-xl font-bold hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
 								Giriş Yap

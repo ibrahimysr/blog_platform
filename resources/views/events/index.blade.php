@@ -4,12 +4,12 @@
 
 @section('content')
 	{{-- Hero Section --}}
-	<div class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 rounded-3xl p-8 md:p-16 mb-12 overflow-hidden">
+	<div class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-blue-800 rounded-3xl p-8 md:p-16 mb-12 overflow-hidden">
 		
 		<div class="absolute inset-0 opacity-20">
 			<div class="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-[100px] animate-pulse"></div>
-			<div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
-			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-500 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+			<div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-400 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-300 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
 		</div>
 
 		<div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
@@ -17,7 +17,7 @@
 		<div class="relative z-10">
 			{{-- Badge --}}
 			<div class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-6 shadow-2xl">
-				<div class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse"></div>
+				<div class="w-2 h-2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full animate-pulse"></div>
 				<span class="text-sm font-bold text-white">Etkinlik Takvimi</span>
 			</div>
 			
@@ -25,14 +25,14 @@
 			<h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
 				Etkinlikler &
 				<span class="relative inline-block">
-					<span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Deneyimler</span>
+					<span class="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">Deneyimler</span>
 					<svg class="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M1 5.5C50 1 100 1 199 5.5" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round"/>
 						<defs>
 							<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
 								<stop offset="0%" style="stop-color:#60a5fa"/>
-								<stop offset="50%" style="stop-color:#a78bfa"/>
-								<stop offset="100%" style="stop-color:#f472b6"/>
+								<stop offset="50%" style="stop-color:#3b82f6"/>
+								<stop offset="100%" style="stop-color:#1d4ed8"/>
 							</linearGradient>
 						</defs>
 					</svg>
@@ -94,7 +94,7 @@
 							     alt="{{ $event->title }}" 
 							     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2">
 						@else
-							<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
+							<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
 								<svg class="w-20 h-20 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 								</svg>
@@ -130,7 +130,7 @@
 					{{-- Content --}}
 					<div class="p-6">
 						<a href="{{ route('events.show', $event) }}" class="block mb-3">
-							<h3 class="text-xl font-black text-gray-900 line-clamp-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300 leading-tight">
+							<h3 class="text-xl font-black text-gray-900 line-clamp-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-blue-700 group-hover:bg-clip-text transition-all duration-300 leading-tight">
 								{{ $event->title }}
 							</h3>
 						</a>
@@ -141,7 +141,7 @@
 						{{-- Meta Info --}}
 						<div class="space-y-3 mb-5 pb-5 border-b-2 border-gray-100">
 							<div class="flex items-center gap-3 text-sm">
-								<div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl flex items-center justify-center">
+								<div class="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
 									<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 									</svg>
@@ -154,8 +154,8 @@
 
 							@if($event->location)
 								<div class="flex items-center gap-3 text-sm">
-									<div class="w-10 h-10 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl flex items-center justify-center">
-										<svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<div class="w-10 h-10 bg-gradient-to-br from-blue-200 to-blue-300 rounded-xl flex items-center justify-center">
+										<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
 										</svg>
@@ -170,7 +170,7 @@
 
 						{{-- Action Button --}}
 						<a href="{{ route('events.show', $event) }}" 
-						   class="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300">
+						   class="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105 transition-all duration-300">
 							<span>Detayları Gör</span>
 							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -180,10 +180,10 @@
 				</article>
 			@empty
 				<div class="col-span-full">
-					<div class="text-center py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 rounded-3xl border-2 border-dashed border-gray-300 relative overflow-hidden">
+					<div class="text-center py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-blue-100 rounded-3xl border-2 border-dashed border-gray-300 relative overflow-hidden">
 						<div class="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 						<div class="relative z-10">
-							<div class="w-24 h-24 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+							<div class="w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6">
 								<svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 								</svg>

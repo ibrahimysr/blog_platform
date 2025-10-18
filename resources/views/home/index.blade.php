@@ -13,17 +13,17 @@
 
 	{{-- HERO SECTION --}}
 	<section class="relative -mt-8 mb-24 overflow-hidden">
-		<div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 opacity-60"></div>
-		<div class="absolute top-0 left-1/4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-		<div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-		<div class="absolute bottom-0 left-1/3 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+		<div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 opacity-60"></div>
+		<div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+		<div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+		<div class="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
 		
 		<div class="relative container mx-auto px-4 pt-20 pb-24">
 			<div class="grid lg:grid-cols-2 gap-12 items-center">
 				{{-- Hero Content --}}
 				<div class="space-y-8 z-10">
 					@if($firstFeatured)
-						<div class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white text-sm font-semibold shadow-lg backdrop-blur-sm">
+						<div class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full text-white text-sm font-semibold shadow-lg backdrop-blur-sm">
 							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
 								<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
 							</svg>
@@ -31,7 +31,7 @@
 						</div>
 						
 						<h1 class="text-5xl lg:text-7xl font-black text-gray-900 leading-tight">
-							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
 								{{ Str::limit($firstFeatured->title, 60) }}
 							</span>
 						</h1>
@@ -59,13 +59,13 @@
 						
 						<div class="flex flex-wrap gap-4">
 							<a href="{{ $routePostsShow ? route('posts.show', $firstFeatured->slug ?? $firstFeatured->id) : '#' }}" 
-							   class="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300">
+							   class="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300">
 								Yazıyı Oku
 								<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
 								</svg>
 							</a>
-							<button class="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-200 hover:border-purple-500 hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+							<button class="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 								<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
 								</svg>
@@ -74,7 +74,7 @@
 						</div>
 					@else
 						<h1 class="text-6xl lg:text-8xl font-black text-gray-900">
-							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">
+							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
 								Deta
 							</span><br>
 							<span class="text-gray-900">Dijital Demokrasi ve Toplum Araştırma Merkezi</span>
@@ -87,7 +87,7 @@
 				
 				{{-- Hero Image --}}
 				<div class="relative group">
-					<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl blur-2xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+					<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 rounded-3xl blur-2xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
 					<div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
 						@if($hero)
 						<img src="{{ $hero->url }}" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-700" alt="{{ $firstFeatured->title ?? '' }}">
@@ -107,9 +107,9 @@
 			<div class="flex items-center justify-between mb-12">
 				<div>
 					<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">Öne Çıkan Bloglar</h2>
-					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
 				</div>
-				<a href="#" class="group hidden md:flex items-center space-x-2 px-6 py-3 bg-gray-900 text-white font-bold rounded-full hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
+				<a href="#" class="group hidden md:flex items-center space-x-2 px-6 py-3 bg-gray-900 text-white font-bold rounded-full hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 transition-all duration-300">
 					<span>Tümünü Gör</span>
 					<svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -128,7 +128,7 @@
 							@if($img)
 								<img src="{{ $img->url }}" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $img->alt }}">
 							@else
-								<div class="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500"></div>
+								<div class="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700"></div>
 							@endif
 							<div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 							
@@ -139,7 +139,7 @@
 									</span>
 								@endif
 								
-								<h3 class="text-2xl {{ $index == 0 ? 'lg:text-4xl' : 'lg:text-3xl' }} font-black text-white mb-3 line-clamp-3 group-hover:text-blue-300 transition-colors">
+								<h3 class="text-2xl {{ $index == 0 ? 'lg:text-4xl' : 'lg:text-3xl' }} font-black text-white mb-3 line-clamp-3 group-hover:text-blue-200 transition-colors">
 									{{ $post->title }}
 								</h3>
 								
@@ -179,19 +179,19 @@
 			{{-- Latest Posts --}}
 			<div class="lg:col-span-2">
 				<div class="flex items-center justify-between mb-8">
-					<div>
-						<h2 class="text-4xl font-black text-gray-900 mb-2">Son Bloglar</h2>
-						<div class="h-2 w-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
-					</div>
+				<div>
+					<h2 class="text-4xl font-black text-gray-900 mb-2">Son Bloglar</h2>
+					<div class="h-2 w-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
+				</div>
 				</div>
 				
 				{{-- Category Filter --}}
 				<div class="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
-					<a href="{{ url('/?') }}" class="px-6 py-3 rounded-2xl text-sm font-bold whitespace-nowrap shadow-lg transition-all duration-300 {{ $activeCatId ? 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105' : 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-xl transform hover:scale-105' }}">
+					<a href="{{ url('/?') }}" class="px-6 py-3 rounded-2xl text-sm font-bold whitespace-nowrap shadow-lg transition-all duration-300 {{ $activeCatId ? 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105' : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:shadow-xl transform hover:scale-105' }}">
 						Tümü
 					</a>
 					@foreach($topCategories->take(5) as $cat)
-						<a href="{{ url('/?category='.$cat->id) }}" class="px-6 py-3 rounded-2xl text-sm font-bold whitespace-nowrap transition-all duration-300 {{ (int)$activeCatId === (int)$cat->id ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg transform scale-[1.03]' : 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105' }}">
+						<a href="{{ url('/?category='.$cat->id) }}" class="px-6 py-3 rounded-2xl text-sm font-bold whitespace-nowrap transition-all duration-300 {{ (int)$activeCatId === (int)$cat->id ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-[1.03]' : 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105' }}">
 							{{ $cat->name }}
 						</a>
 					@endforeach
@@ -206,7 +206,7 @@
 									@if($img)
 										<img src="{{ $img->url }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $img->alt }}">
 									@else
-										<div class="w-full h-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400"></div>
+										<div class="w-full h-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600"></div>
 									@endif
 									<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
 								</a>
@@ -214,13 +214,13 @@
 								<div class="p-8 flex flex-col justify-between flex-grow">
 									<div>
 										@if($post->categories->isNotEmpty())
-											<span class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 text-xs font-bold rounded-full mb-4">
+											<span class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-xs font-bold rounded-full mb-4">
 												{{ $post->categories->first()->name }}
 											</span>
 										@endif
 										
 										<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block group">
-											<h3 class="text-2xl font-black text-gray-900 mb-3 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+											<h3 class="text-2xl font-black text-gray-900 mb-3 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300">
 												{{ $post->title }}
 											</h3>
 										</a>
@@ -247,7 +247,7 @@
 												</span>
 											@endif
 										</div>
-										<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+										<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 											<span>Oku</span>
 											<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -289,11 +289,11 @@
 							{{-- Page Numbers --}}
 							@foreach($latestPosts->getUrlRange(1, $latestPosts->lastPage()) as $page => $url)
 								@if($page == $latestPosts->currentPage())
-									<span class="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-bold shadow-lg">
+									<span class="px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-bold shadow-lg">
 										{{ $page }}
 									</span>
 								@else
-									<a href="{{ $url }}" class="px-4 py-2 bg-white text-gray-700 border-2 border-gray-200 rounded-lg hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:border-transparent transition-all duration-300 transform hover:scale-105">
+									<a href="{{ $url }}" class="px-4 py-2 bg-white text-gray-700 border-2 border-gray-200 rounded-lg hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-700 hover:text-white hover:border-transparent transition-all duration-300 transform hover:scale-105">
 										{{ $page }}
 									</a>
 								@endif
@@ -322,7 +322,7 @@
 			<div class="space-y-8">
 				{{-- Popular Posts --}}
 				@if($popularPosts->count())
-					<div class="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-8 shadow-2xl overflow-hidden">
+					<div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-8 shadow-2xl overflow-hidden">
 						<div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20"></div>
 						<div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
 						
@@ -336,7 +336,7 @@
 							<div class="space-y-5">
 								@foreach($popularPosts->take(5) as $index => $post)
 									<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="flex items-start space-x-4 group">
-										<span class="flex-shrink-0 w-10 h-10 bg-white text-purple-600 rounded-xl flex items-center justify-center font-black text-lg shadow-lg">
+										<span class="flex-shrink-0 w-10 h-10 bg-white text-blue-600 rounded-xl flex items-center justify-center font-black text-lg shadow-lg">
 											{{ $index + 1 }}
 										</span>
 										<div class="flex-grow">
@@ -370,11 +370,11 @@
 						<div class="space-y-3">
 						@foreach($topCategories->take(6) as $cat)
 							@php $isActive = (int)$activeCatId === (int)$cat->id; @endphp
-							<a href="{{ url('/?category='.$cat->id) }}" class="group flex items-center justify-between p-4 rounded-2xl transition-all duration-300 border-2 {{ $isActive ? 'bg-gradient-to-r from-blue-50 to-purple-50 border-purple-200' : 'border-transparent hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:border-purple-200' }}">
-								<span class="font-bold transition-colors {{ $isActive ? 'text-purple-700' : 'text-gray-700 group-hover:text-purple-600' }}">
+							<a href="{{ url('/?category='.$cat->id) }}" class="group flex items-center justify-between p-4 rounded-2xl transition-all duration-300 border-2 {{ $isActive ? 'bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200' : 'border-transparent hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 hover:border-blue-200' }}">
+								<span class="font-bold transition-colors {{ $isActive ? 'text-blue-700' : 'text-gray-700 group-hover:text-blue-600' }}">
 									{{ $cat->name }}
 								</span>
-								<span class="px-4 py-2 rounded-xl text-sm font-black transition-all duration-300 {{ $isActive ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' : 'bg-gradient-to-r from-blue-100 to-purple-100 text-blue-700 group-hover:from-blue-600 group-hover:to-purple-600 group-hover:text-white' }}">
+								<span class="px-4 py-2 rounded-xl text-sm font-black transition-all duration-300 {{ $isActive ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white' : 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 group-hover:from-blue-600 group-hover:to-blue-700 group-hover:text-white' }}">
 									{{ $cat->posts_count }}
 								</span>
 							</a>
@@ -393,18 +393,18 @@
 			<div class="flex items-center justify-between mb-12">
 				<div>
                     <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">{{ ($eventsArePast ?? false) ? 'Geçmiş Etkinlikler' : 'Yaklaşan Etkinlikler' }}</h2>
-					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
 				</div>
 			</div>
 			
 			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 				@foreach($upcomingEvents as $event)
 					<article class="group relative bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
-						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full -mr-16 -mt-16"></div>
+						<div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-full -mr-16 -mt-16"></div>
 						
 						<div class="relative z-10">
 							<div class="flex items-start space-x-4 mb-6">
-								<div class="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex flex-col items-center justify-center text-white shadow-lg">
+								<div class="flex-shrink-0 w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex flex-col items-center justify-center text-white shadow-lg">
 									<span class="text-3xl font-black">{{ $event->event_date?->format('d') }}</span>
 									<span class="text-xs uppercase font-bold">{{ $event->event_date?->format('M') }}</span>
 								</div>
@@ -412,7 +412,7 @@
 									<div class="text-sm text-gray-500 font-semibold mb-2">
 										{{ $event->event_date?->format('H:i') }}
 									</div>
-									<h3 class="text-xl font-black text-gray-900 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all duration-300">
+									<h3 class="text-xl font-black text-gray-900 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300">
 										{{ $event->title }}
 									</h3>
 								</div>
@@ -420,7 +420,7 @@
 							<p class="text-gray-600 line-clamp-3 mb-6 leading-relaxed">
 								{{ Str::limit(strip_tags($event->description), 120) }}
 							</p>
-                            <a href="{{ route('events.show', $event->slug) }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                            <a href="{{ route('events.show', $event->slug) }}" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
 								<span>Detayları Gör</span>
 								<svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -468,7 +468,7 @@
 			</div>
 			
 			<div class="text-center mt-12">
-				<a href="{{ route('galleries.index') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+				<a href="{{ route('galleries.index') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
 					<span>Tüm Galeriyi Gör</span>
 					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -483,8 +483,8 @@
 		<section class="container mx-auto px-4 mb-32">
 			<div class="flex items-center justify-between mb-12">
 				<div>
-					<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">Son Yorumlar</h2>
-					<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+				<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-2">Son Yorumlar</h2>
+				<div class="h-2 w-24 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
 				</div>
 			</div>
 			
@@ -492,7 +492,7 @@
 				@foreach($recentComments as $comment)
 					<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
 						<div class="flex items-start space-x-4">
-							<div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg">
+							<div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-lg">
 								{{ substr($comment->user_name ?? 'A', 0, 1) }}
 							</div>
 							<div class="flex-grow">
@@ -504,7 +504,7 @@
 									{{ $comment->content }}
 								</p>
 								@if($comment->post)
-									<a href="{{ $routePostsShow ? route('posts.show', $comment->post->slug ?? $comment->post->id) : '#' }}" class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-purple-600 transition-colors">
+									<a href="{{ $routePostsShow ? route('posts.show', $comment->post->slug ?? $comment->post->id) : '#' }}" class="inline-flex items-center text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors">
 										<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 										</svg>
@@ -521,7 +521,7 @@
 
 	{{-- CTA SECTION --}}
 	<section class="container mx-auto px-4 mb-20">
-		<div class="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 lg:p-20 overflow-hidden shadow-2xl">
+		<div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-12 lg:p-20 overflow-hidden shadow-2xl">
 			<div class="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full -ml-48 -mt-48"></div>
 			<div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mb-48"></div>
 			

@@ -42,7 +42,7 @@
             left: 50%;
             width: 0;
             height: 3px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
+            background: linear-gradient(90deg, #1877F2, #42A5F5);
             transform: translateX(-50%);
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: 3px;
@@ -54,7 +54,7 @@
         
         .nav-link:hover {
             transform: translateY(-2px);
-            color: #667eea;
+            color: #1877F2;
         }
         
         .logo-glow {
@@ -62,19 +62,19 @@
         }
         
         @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 40px rgba(118, 75, 162, 0.6); }
+            0%, 100% { box-shadow: 0 0 20px rgba(24, 119, 242, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(24, 119, 242, 0.8), 0 0 40px rgba(66, 165, 245, 0.6); }
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1877F2 0%, #42A5F5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1877F2 0%, #42A5F5 100%);
             position: relative;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -97,7 +97,7 @@
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(24, 119, 242, 0.4);
         }
         
         .dropdown-menu {
@@ -140,7 +140,7 @@
             position: absolute;
             inset: -3px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #1877F2, #42A5F5);
             z-index: -1;
             animation: rotate 3s linear infinite;
         }
@@ -161,7 +161,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #667eea, #764ba2, transparent);
+            background: linear-gradient(90deg, transparent, #1877F2, #42A5F5, transparent);
         }
         
         .social-icon {
@@ -170,7 +170,7 @@
         
         .social-icon:hover {
             transform: translateY(-5px) scale(1.1);
-            filter: drop-shadow(0 5px 15px rgba(102, 126, 234, 0.5));
+            filter: drop-shadow(0 5px 15px rgba(24, 119, 242, 0.5));
         }
         
         .mobile-menu-slide {
@@ -208,7 +208,7 @@
         
         .input-modern:focus {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 10px 25px rgba(24, 119, 242, 0.2);
         }
     </style>
 </head>
@@ -219,7 +219,7 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="/" class="flex items-center space-x-3 group">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-2xl flex items-center justify-center logo-glow transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 rounded-2xl flex items-center justify-center logo-glow transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                         </svg>
@@ -229,16 +229,16 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-10">
-                    <a href="/" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">ANA SAYFA</a>
-                    <a href="{{ route('posts.list') }}" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">BLOGLAR</a>
-                    <a href="{{ route('galleries.index') }}" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">GALERİ</a>
-                    <a href="{{ route('events.list') }}" class="nav-link text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide">ETKİNLİKLER</a>
+                    <a href="/" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide">ANA SAYFA</a>
+                    <a href="{{ route('posts.list') }}" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide">BLOGLAR</a>
+                    <a href="{{ route('galleries.index') }}" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide">GALERİ</a>
+                    <a href="{{ route('events.list') }}" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide">ETKİNLİKLER</a>
                 </div>
 
                 <!-- User Menu / Auth -->
                 <div class="hidden md:flex items-center space-x-4">
                     @guest
-                        <a href="{{ route('login') }}" class="text-gray-700 hover:text-purple-600 font-semibold text-sm tracking-wide transition-all">
+                        <a href="{{ route('login') }}" class="text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide transition-all">
                             GİRİŞ YAP
                         </a>
                         <a href="{{ route('register') }}" class="btn-primary text-white px-6 py-3 rounded-xl font-bold text-sm tracking-wide shadow-lg">
@@ -246,8 +246,8 @@
                         </a>
                     @else
                         <div class="relative dropdown">
-                            <button id="user-menu-btn" class="flex items-center space-x-3 text-gray-700 hover:text-purple-600 transition-all">
-                                <div class="avatar-ring w-11 h-11 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                            <button id="user-menu-btn" class="flex items-center space-x-3 text-gray-700 hover:text-blue-600 transition-all">
+                                <div class="avatar-ring w-11 h-11 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
                                     {{ substr(Auth::user()->name, 0, 1) }}
                                 </div>
                                 <span class="font-semibold text-sm">{{ Auth::user()->name }}</span>
@@ -256,7 +256,7 @@
                                 </svg>
                             </button>
                             <div id="user-menu" class="dropdown-menu hidden absolute right-0 mt-4 w-56 glass-effect rounded-2xl shadow-2xl py-2 border border-white/20 overflow-hidden">
-                                <a href="{{ route('profile.edit') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 transition-all">
+                                <a href="{{ route('profile.edit') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                                     </svg>
@@ -289,21 +289,21 @@
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="hidden md:hidden pb-6 mobile-menu-slide">
                 <div class="flex flex-col space-y-2 mt-4">
-                    <a href="/" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Ana Sayfa</a>
-                    <a href="{{ route('posts.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Bloglar</a>
-                    <a href="{{ route('galleries.index') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Galeri</a>
-                    <a href="{{ route('events.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Etkinlikler</a>
+                    <a href="/" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Ana Sayfa</a>
+                    <a href="{{ route('posts.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Bloglar</a>
+                    <a href="{{ route('galleries.index') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Galeri</a>
+                    <a href="{{ route('events.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Etkinlikler</a>
                     @guest
-                        <a href="{{ route('login') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Giriş Yap</a>
+                        <a href="{{ route('login') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Giriş Yap</a>
                         <a href="{{ route('register') }}" class="btn-primary text-white px-4 py-3 rounded-lg text-center font-bold text-sm">Kayıt Ol</a>
                     @else
                         <div class="flex items-center space-x-3 py-3 px-4">
-                            <div class="avatar-ring w-8 h-8 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                            <div class="avatar-ring w-8 h-8 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
                                 {{ substr(Auth::user()->name, 0, 1) }}
                             </div>
                             <span class="font-semibold text-sm text-gray-700">{{ Auth::user()->name }}</span>
                         </div>
-                        <a href="{{ route('profile.edit') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-indigo-50 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Profilim</a>
+                        <a href="{{ route('profile.edit') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Profilim</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="text-red-600 hover:bg-red-50 py-3 px-4 rounded-lg w-full text-left font-semibold text-sm transition-all">Çıkış Yap</button>
@@ -367,7 +367,7 @@
                 <!-- About -->
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center space-x-3 mb-6 floating">
-                        <div class="w-12 h-12 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-2xl flex items-center justify-center logo-glow">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 rounded-2xl flex items-center justify-center logo-glow">
                             <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                             </svg>
@@ -408,7 +408,7 @@
                     <h3 class="font-bold text-white mb-6 text-lg tracking-wide">BÜLTEN</h3>
                     <p class="text-gray-300 text-sm mb-6 leading-relaxed">Yeni içeriklerden haberdar olmak için abone olun.</p>
                     <form class="space-y-3">
-                        <input type="email" placeholder="Email adresiniz" class="input-modern w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm">
+                        <input type="email" placeholder="Email adresiniz" class="input-modern w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm">
                         <button type="submit" class="btn-primary w-full text-white px-4 py-3 rounded-xl font-bold text-sm tracking-wide shadow-lg">
                             ABONE OL
                         </button>

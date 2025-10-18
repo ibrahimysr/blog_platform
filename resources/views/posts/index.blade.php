@@ -4,11 +4,11 @@
 
 @section('content')
 	{{-- Hero Section  --}}
-	<div class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 rounded-3xl p-8 md:p-16 mb-12 overflow-hidden">
+	<div class="relative bg-gradient-to-br from-slate-900 via-blue-900 to-blue-800 rounded-3xl p-8 md:p-16 mb-12 overflow-hidden">
 		<div class="absolute inset-0 opacity-20">
 			<div class="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-[100px] animate-pulse"></div>
-			<div class="absolute bottom-0 left-0 w-80 h-80 bg-purple-500 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
-			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-cyan-500 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
+			<div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-400 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 1s;"></div>
+			<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-300 rounded-full filter blur-[100px] animate-pulse" style="animation-delay: 2s;"></div>
 		</div>
 
 		<div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
@@ -16,7 +16,7 @@
 		<div class="relative z-10">
 			{{-- Category Badge --}}
 			<div class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full mb-6 shadow-2xl">
-				<div class="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse"></div>
+				<div class="w-2 h-2 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full animate-pulse"></div>
 				<span class="text-sm font-bold text-white">{{ $activeCategory->name ?? 'Tüm Kategoriler' }}</span>
 			</div>
 			
@@ -24,14 +24,14 @@
 			<h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[1.1]">
 				Keşfet & 
 				<span class="relative inline-block">
-					<span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Öğren</span>
+					<span class="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">Öğren</span>
 					<svg class="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M1 5.5C50 1 100 1 199 5.5" stroke="url(#gradient)" stroke-width="3" stroke-linecap="round"/>
 						<defs>
 							<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
 								<stop offset="0%" style="stop-color:#60a5fa"/>
-								<stop offset="50%" style="stop-color:#a78bfa"/>
-								<stop offset="100%" style="stop-color:#f472b6"/>
+								<stop offset="50%" style="stop-color:#3b82f6"/>
+								<stop offset="100%" style="stop-color:#1d4ed8"/>
 							</linearGradient>
 						</defs>
 					</svg>
@@ -56,7 +56,7 @@
 				</div>
 				<div class="flex items-center gap-3">
 					<div class="w-12 h-12 bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl flex items-center justify-center">
-						<svg class="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+						<svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
 							<path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/>
 						</svg>
 					</div>
@@ -77,7 +77,7 @@
 				<span class="text-sm font-bold text-gray-900">Filtrele:</span>
 				<div class="flex gap-2">
 					<a href="?{{ http_build_query(request()->except('sort')) }}" 
-					   class="group px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 {{ request('sort') !== 'popular' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105' : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105' }}">
+					   class="group px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 {{ request('sort') !== 'popular' ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105' : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105' }}">
 						<span class="flex items-center gap-2">
 							<svg class="w-4 h-4 {{ request('sort') !== 'popular' ? 'animate-spin-slow' : '' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
@@ -86,7 +86,7 @@
 						</span>
 					</a>
 					<a href="?{{ http_build_query(array_merge(request()->except('sort'), ['sort' => 'popular'])) }}" 
-					   class="group px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 {{ request('sort') === 'popular' ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105' : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105' }}">
+					   class="group px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 {{ request('sort') === 'popular' ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105' : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:scale-105' }}">
 						<span class="flex items-center gap-2">
 							<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
@@ -147,7 +147,7 @@
 								     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2" 
 								     alt="{{ $img->alt }}">
 							@else
-								<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
+								<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
 									<svg class="w-20 h-20 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
 									</svg>
@@ -161,7 +161,7 @@
 							@if($post->categories->isNotEmpty())
 								<div class="absolute top-4 left-4 z-10">
 									<span class="inline-flex items-center gap-2 px-4 py-2 bg-white/95 backdrop-blur-sm text-gray-900 text-xs font-black rounded-full shadow-xl group-hover:scale-110 transition-transform duration-300">
-										<span class="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-pulse"></span>
+										<span class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full animate-pulse"></span>
 										{{ $post->categories->first()->name }}
 									</span>
 								</div>
@@ -178,7 +178,7 @@
 						{{-- Content --}}
 						<div class="p-6">
 							<a href="{{ route('posts.show', $post) }}" class="block">
-								<h3 class="text-xl font-black text-gray-900 mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text transition-all duration-300 leading-tight">
+								<h3 class="text-xl font-black text-gray-900 mb-3 line-clamp-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-blue-700 group-hover:bg-clip-text transition-all duration-300 leading-tight">
 									{{ $post->title }}
 								</h3>
 							</a>
@@ -224,10 +224,10 @@
 					</article>
 				@empty
 					<div class="col-span-full">
-						<div class="text-center py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 rounded-3xl border-2 border-dashed border-gray-300 relative overflow-hidden">
+						<div class="text-center py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-blue-100 rounded-3xl border-2 border-dashed border-gray-300 relative overflow-hidden">
 							<div class="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
 							<div class="relative z-10">
-								<div class="w-24 h-24 bg-gradient-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+								<div class="w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center mx-auto mb-6">
 									<svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 									</svg>
@@ -252,7 +252,7 @@
 			@if($categories->count())
 				<div class="bg-white rounded-2xl p-6 border-2 border-gray-100 shadow-xl sticky top-6">
 					<div class="flex items-center gap-3 mb-6">
-						<div class="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+						<div class="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg">
 							<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
 								<path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/>
 							</svg>
@@ -262,11 +262,11 @@
 					<div class="space-y-2">
 						@foreach($categories as $cat)
 							<a href="?{{ http_build_query(array_merge(request()->except('category'), ['category' => $cat->id])) }}" 
-							   class="flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 group border-2 {{ request('category') == $cat->id ? 'bg-gradient-to-r from-blue-50 to-purple-50 border-blue-500 shadow-lg' : 'border-transparent hover:border-gray-200' }}">
+							   class="flex items-center justify-between p-4 rounded-xl hover:bg-gray-50 transition-all duration-300 group border-2 {{ request('category') == $cat->id ? 'bg-gradient-to-r from-blue-50 to-blue-100 border-blue-500 shadow-lg' : 'border-transparent hover:border-gray-200' }}">
 								<span class="text-sm font-bold {{ request('category') == $cat->id ? 'text-blue-700' : 'text-gray-700 group-hover:text-gray-900' }}">
 									{{ $cat->name }}
 								</span>
-								<span class="flex items-center justify-center min-w-[32px] h-8 px-3 {{ request('category') == $cat->id ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : 'bg-gray-100 text-gray-600 group-hover:bg-gray-200' }} rounded-full text-xs font-black transition-all duration-300">
+								<span class="flex items-center justify-center min-w-[32px] h-8 px-3 {{ request('category') == $cat->id ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg' : 'bg-gray-100 text-gray-600 group-hover:bg-gray-200' }} rounded-full text-xs font-black transition-all duration-300">
 									{{ $cat->posts_count }}
 								</span>
 							</a>

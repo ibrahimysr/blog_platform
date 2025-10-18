@@ -8,7 +8,7 @@
         <!-- Register Card -->
         <div class="glass-effect rounded-3xl shadow-2xl overflow-hidden border border-white/20">
             <!-- Header -->
-            <div class="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 px-8 py-10 text-center relative overflow-hidden">
+            <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 px-8 py-10 text-center relative overflow-hidden">
                 <div class="absolute inset-0 bg-black/10"></div>
                 <div class="relative z-10">
                     <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-4 logo-glow">
@@ -49,7 +49,7 @@
                                 name="name" 
                                 value="{{ old('name') }}" 
                                 required
-                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300"
+                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-all duration-300"
                                 placeholder="Ahmet Yılmaz"
                             />
                         </div>
@@ -69,7 +69,7 @@
                                 name="email" 
                                 value="{{ old('email') }}" 
                                 required
-                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300"
+                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-all duration-300"
                                 placeholder="ornek@email.com"
                             />
                         </div>
@@ -88,7 +88,7 @@
                                 type="password" 
                                 name="password" 
                                 required
-                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300"
+                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-all duration-300"
                                 placeholder="En az 8 karakter"
                             />
                         </div>
@@ -108,7 +108,7 @@
                                 type="password" 
                                 name="password_confirmation" 
                                 required
-                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white transition-all duration-300"
+                                class="input-modern w-full pl-12 pr-4 py-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-all duration-300"
                                 placeholder="Şifrenizi tekrar girin"
                             />
                         </div>
@@ -117,10 +117,10 @@
                     <!-- Terms & Conditions -->
                     <div class="pt-2">
                         <label class="flex items-start space-x-3 cursor-pointer group">
-                            <input type="checkbox" required class="w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500 focus:ring-2 transition-all mt-0.5 flex-shrink-0">
+                            <input type="checkbox" required class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 transition-all mt-0.5 flex-shrink-0">
                             <span class="text-sm text-gray-600 leading-relaxed">
-                                <a href="#" class="text-purple-600 font-semibold hover:underline">Kullanım Şartları</a> ve 
-                                <a href="#" class="text-purple-600 font-semibold hover:underline">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.
+                                <a href="#" class="text-blue-600 font-semibold hover:underline">Kullanım Şartları</a> ve 
+                                <a href="#" class="text-blue-600 font-semibold hover:underline">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum.
                             </span>
                         </label>
                     </div>
@@ -150,7 +150,7 @@
                 <div class="mt-8 text-center">
                     <p class="text-gray-600 font-medium">
                         Zaten hesabınız var mı? 
-                        <a href="{{ route('login') }}" class="text-purple-600 font-bold hover:text-purple-700 transition-colors hover:underline">
+                        <a href="{{ route('login') }}" class="text-blue-600 font-bold hover:text-blue-700 transition-colors hover:underline">
                             Giriş Yapın
                         </a>
                     </p>
@@ -161,24 +161,24 @@
         <!-- Benefits Section -->
         <div class="mt-8 grid grid-cols-3 gap-4">
             <div class="text-center">
-                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-2">
-                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                     </svg>
                 </div>
                 <p class="text-xs font-semibold text-gray-600">Güvenli</p>
             </div>
             <div class="text-center">
-                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-2">
-                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
                 </div>
                 <p class="text-xs font-semibold text-gray-600">Hızlı</p>
             </div>
             <div class="text-center">
-                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-2">
-                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-2">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                     </svg>
                 </div>
