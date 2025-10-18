@@ -32,7 +32,7 @@ class HomeController extends Controller
         }
 
         $latestPosts = $latestQuery->orderByDesc('published_at')
-            ->paginate(5)
+            ->paginate(12)
             ->withQueryString();
 
         $sinceDate = now()->subDays(30)->toDateString();

@@ -175,18 +175,19 @@
 
 	{{-- LATEST POSTS & SIDEBAR --}}
 	<section class="container mx-auto px-4 mb-32">
-		<div class="grid lg:grid-cols-3 gap-12">
-			{{-- Latest Posts --}}
-			<div class="lg:col-span-2">
-				<div class="flex items-center justify-between mb-8">
-				<div>
-					<h2 class="text-4xl font-black text-gray-900 mb-2">Son Bloglar</h2>
-					<div class="h-2 w-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
-				</div>
+		{{-- Latest Posts - 4x4x4 Grid --}}
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+			{{-- Section Header --}}
+			<div class="col-span-full mb-8">
+				<div class="flex items-center justify-between">
+					<div>
+						<h2 class="text-4xl font-black text-gray-900 mb-2">Son Bloglar</h2>
+						<div class="h-2 w-20 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
+					</div>
 				</div>
 				
 				{{-- Category Filter --}}
-				<div class="flex gap-3 mb-10 overflow-x-auto pb-2 scrollbar-hide">
+				<div class="flex gap-3 mt-6 overflow-x-auto pb-2 scrollbar-hide">
 					<a href="{{ url('/?') }}" class="px-6 py-3 rounded-2xl text-sm font-bold whitespace-nowrap shadow-lg transition-all duration-300 {{ $activeCatId ? 'bg-white text-gray-700 border-2 border-gray-200 hover:bg-gray-900 hover:text-white hover:border-gray-900 transform hover:scale-105' : 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:shadow-xl transform hover:scale-105' }}">
 						Tümü
 					</a>
@@ -196,81 +197,88 @@
 						</a>
 					@endforeach
 				</div>
-
-				<div class="space-y-8">
-					@forelse ($latestPosts as $post)
-						@php $img = $post->media->firstWhere('is_primary', true) ?: $post->media->first(); @endphp
-						<article class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1">
-							<div class="flex flex-col md:flex-row">
-								<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="relative w-full md:w-80 h-64 md:h-auto flex-shrink-0 overflow-hidden">
-									@if($img)
-										<img src="{{ $img->url }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $img->alt }}">
-									@else
-										<div class="w-full h-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600"></div>
-									@endif
-									<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-								</a>
-								
-								<div class="p-8 flex flex-col justify-between flex-grow">
-									<div>
-										@if($post->categories->isNotEmpty())
-											<span class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 text-xs font-bold rounded-full mb-4">
-												{{ $post->categories->first()->name }}
-											</span>
-										@endif
-										
-										<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block group">
-											<h3 class="text-2xl font-black text-gray-900 mb-3 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300">
-												{{ $post->title }}
-											</h3>
-										</a>
-										
-										<p class="text-gray-600 text-lg line-clamp-2 mb-6">
-											{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 140) }}
-										</p>
-									</div>
-									
-									<div class="flex items-center justify-between">
-										<div class="flex items-center space-x-4 text-sm text-gray-500">
-											<span class="flex items-center font-medium">
-												<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-												</svg>
-												{{ $post->published_at?->format('d.m.Y') }}
-											</span>
-											@if(isset($post->reading_time))
-												<span class="flex items-center font-medium">
-													<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-													</svg>
-													{{ $post->reading_time }} dk
-												</span>
-											@endif
-										</div>
-										<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="group inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-											<span>Oku</span>
-											<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-												<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-											</svg>
-										</a>
-									</div>
-								</div>
+			</div>
+			@forelse ($latestPosts as $post)
+				@php $img = $post->media->firstWhere('is_primary', true) ?: $post->media->first(); @endphp
+				<article class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+					{{-- Image --}}
+					<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block relative h-64 overflow-hidden">
+						@if($img)
+							<img src="{{ $img->url }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700" alt="{{ $img->alt }}">
+						@else
+							<div class="w-full h-full bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 flex items-center justify-center">
+								<svg class="w-16 h-16 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+								</svg>
 							</div>
-						</article>
-					@empty
-						<div class="text-center py-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl">
-							<svg class="w-24 h-24 mx-auto text-gray-300 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-							</svg>
-							<p class="text-gray-500 text-xl font-semibold">Henüz yazı bulunmuyor</p>
+						@endif
+						<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+						
+						{{-- Category Badge --}}
+						@if($post->categories->isNotEmpty())
+							<div class="absolute top-4 left-4">
+								<span class="inline-flex items-center px-3 py-1.5 bg-white/95 backdrop-blur-sm text-gray-900 text-xs font-bold rounded-full shadow-lg">
+									{{ $post->categories->first()->name }}
+								</span>
+							</div>
+						@endif
+					</a>
+					
+					{{-- Content --}}
+					<div class="p-6">
+						<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="block group">
+							<h3 class="text-lg font-black text-gray-900 mb-3 line-clamp-2 group-hover:bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-blue-700 transition-all duration-300">
+								{{ $post->title }}
+							</h3>
+						</a>
+						
+						<p class="text-gray-600 text-sm line-clamp-3 mb-4 leading-relaxed">
+							{{ $post->excerpt ?? Str::limit(strip_tags($post->content), 100) }}
+						</p>
+						
+						{{-- Meta Info --}}
+						<div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+							<span class="flex items-center font-medium">
+								<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+								</svg>
+								{{ $post->published_at?->format('d.m.Y') }}
+							</span>
+							@if(isset($post->reading_time))
+								<span class="flex items-center font-medium">
+									<svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+									</svg>
+									{{ $post->reading_time }} dk
+								</span>
+							@endif
 						</div>
-					@endforelse
+						
+						{{-- Read More Button --}}
+						<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-sm font-bold rounded-full hover:shadow-lg transform hover:scale-105 transition-all duration-300">
+							<span>Oku</span>
+							<svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+							</svg>
+						</a>
+					</div>
+				</article>
+			@empty
+				<div class="col-span-full">
+					<div class="text-center py-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl">
+						<svg class="w-24 h-24 mx-auto text-gray-300 mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+						</svg>
+						<p class="text-gray-500 text-xl font-semibold">Henüz yazı bulunmuyor</p>
+					</div>
 				</div>
+			@endforelse
+		</div>
 
-				{{-- Pagination --}}
-				@if($latestPosts->hasPages())
-					<div class="mt-12 flex justify-center">
-						<div class="flex items-center space-x-2">
+		{{-- Pagination --}}
+		@if($latestPosts->hasPages())
+			<div class="mt-12 flex justify-center">
+				<div class="flex items-center space-x-2">
 							{{-- Previous Page --}}
 							@if($latestPosts->onFirstPage())
 								<span class="px-4 py-2 bg-gray-100 text-gray-400 rounded-lg cursor-not-allowed">
@@ -316,75 +324,6 @@
 						</div>
 					</div>
 				@endif
-			</div>
-
-			{{-- Sidebar --}}
-			<div class="space-y-8">
-				{{-- Popular Posts --}}
-				@if($popularPosts->count())
-					<div class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-8 shadow-2xl overflow-hidden">
-						<div class="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -mr-20 -mt-20"></div>
-						<div class="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full -ml-16 -mb-16"></div>
-						
-						<div class="relative z-10">
-							<h3 class="text-2xl font-black text-white mb-8 flex items-center">
-								<svg class="w-7 h-7 mr-3" fill="currentColor" viewBox="0 0 20 20">
-									<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-								</svg>
-								Popüler Bloglar
-							</h3>
-							<div class="space-y-5">
-								@foreach($popularPosts->take(5) as $index => $post)
-									<a href="{{ $routePostsShow ? route('posts.show', $post->slug ?? $post->id) : '#' }}" class="flex items-start space-x-4 group">
-										<span class="flex-shrink-0 w-10 h-10 bg-white text-blue-600 rounded-xl flex items-center justify-center font-black text-lg shadow-lg">
-											{{ $index + 1 }}
-										</span>
-										<div class="flex-grow">
-											<h4 class="font-bold text-white line-clamp-2 group-hover:text-blue-200 transition-colors mb-2">
-												{{ $post->title }}
-											</h4>
-											<div class="flex items-center text-xs text-blue-100">
-												<span>{{ $post->published_at?->format('d.m.Y') }}</span>
-												@if($post->categories->isNotEmpty())
-													<span class="mx-2">•</span>
-													<span>{{ $post->categories->first()->name }}</span>
-												@endif
-											</div>
-										</div>
-									</a>
-								@endforeach
-							</div>
-						</div>
-					</div>
-				@endif
-
-				{{-- Categories --}}
-				@if($topCategories->count())
-					<div class="bg-white rounded-3xl p-8 shadow-xl">
-						<h3 class="text-2xl font-black text-gray-900 mb-8 flex items-center">
-							<svg class="w-7 h-7 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
-							</svg>
-							Kategoriler
-						</h3>
-						<div class="space-y-3">
-						@foreach($topCategories->take(6) as $cat)
-							@php $isActive = (int)$activeCatId === (int)$cat->id; @endphp
-							<a href="{{ url('/?category='.$cat->id) }}" class="group flex items-center justify-between p-4 rounded-2xl transition-all duration-300 border-2 {{ $isActive ? 'bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200' : 'border-transparent hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 hover:border-blue-200' }}">
-								<span class="font-bold transition-colors {{ $isActive ? 'text-blue-700' : 'text-gray-700 group-hover:text-blue-600' }}">
-									{{ $cat->name }}
-								</span>
-								<span class="px-4 py-2 rounded-xl text-sm font-black transition-all duration-300 {{ $isActive ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white' : 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-700 group-hover:from-blue-600 group-hover:to-blue-700 group-hover:text-white' }}">
-									{{ $cat->posts_count }}
-								</span>
-							</a>
-						@endforeach
-						</div>
-					</div>
-				@endif
-
-			</div>
-		</div>
 	</section>
 
     {{-- UPCOMING OR RECENT EVENTS --}}
