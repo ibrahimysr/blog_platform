@@ -275,6 +275,43 @@
                     <a href="{{ route('posts.list') }}" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide">BLOGLAR</a>
                     <a href="{{ route('galleries.index') }}" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide">GALERİ</a>
                     <a href="{{ route('events.list') }}" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide">ETKİNLİKLER</a>
+                    
+                    <!-- Hakkımızda Dropdown -->
+                    <div class="relative dropdown">
+                        <button id="about-menu-btn" class="nav-link text-gray-700 hover:text-blue-600 font-semibold text-sm tracking-wide flex items-center">
+                            HAKKIMIZDA
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div id="about-menu" class="dropdown-menu hidden absolute left-0 mt-4 w-64 glass-effect rounded-2xl shadow-2xl py-2 border border-white/20 overflow-hidden">
+                            <a href="{{ route('about.index') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="font-medium">Biz Kimiz?</span>
+                            </a>
+                            <a href="{{ route('about.member') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                </svg>
+                                <span class="font-medium">Türkab Üyesi Kimdir?</span>
+                            </a>
+                            <a href="{{ route('about.representatives') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                                <span class="font-medium">Temsilciliklerimiz</span>
+                            </a>
+                            <a href="{{ route('about.why-founded') }}" class="flex items-center space-x-3 px-5 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 transition-all">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                                </svg>
+                                <span class="font-medium">Neden Kurulduk?</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- User Menu / Auth -->
@@ -335,6 +372,14 @@
                     <a href="{{ route('posts.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Bloglar</a>
                     <a href="{{ route('galleries.index') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Galeri</a>
                     <a href="{{ route('events.list') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Etkinlikler</a>
+                    
+                    <!-- Mobile Hakkımızda Section -->
+                    <div class="border-t border-gray-200 my-2"></div>
+                    <div class="text-gray-500 text-xs font-bold uppercase tracking-wide px-4 py-2">Hakkımızda</div>
+                    <a href="{{ route('about.index') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-2 px-6 rounded-lg font-medium text-sm transition-all">Biz Kimiz?</a>
+                    <a href="{{ route('about.member') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-2 px-6 rounded-lg font-medium text-sm transition-all">Türkab Üyesi Kimdir?</a>
+                    <a href="{{ route('about.representatives') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-2 px-6 rounded-lg font-medium text-sm transition-all">Temsilciliklerimiz</a>
+                    <a href="{{ route('about.why-founded') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-2 px-6 rounded-lg font-medium text-sm transition-all">Neden Kurulduk?</a>
                     @guest
                         <a href="{{ route('login') }}" class="text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-blue-100 py-3 px-4 rounded-lg font-semibold text-sm transition-all">Giriş Yap</a>
                         <a href="{{ route('register') }}" class="btn-primary text-white px-4 py-3 rounded-lg text-center font-bold text-sm">Kayıt Ol</a>
@@ -493,6 +538,23 @@
         (function(){
             const btn = document.getElementById('user-menu-btn');
             const menu = document.getElementById('user-menu');
+            if (!btn || !menu) return;
+            btn.addEventListener('click', function(e){
+                e.stopPropagation();
+                menu.classList.toggle('hidden');
+            });
+            menu.addEventListener('click', function(e){
+                e.stopPropagation();
+            });
+            document.addEventListener('click', function(){
+                if (!menu.classList.contains('hidden')) menu.classList.add('hidden');
+            });
+        })();
+
+        // About dropdown: click-to-toggle and click-outside to close
+        (function(){
+            const btn = document.getElementById('about-menu-btn');
+            const menu = document.getElementById('about-menu');
             if (!btn || !menu) return;
             btn.addEventListener('click', function(e){
                 e.stopPropagation();

@@ -14,6 +14,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HeroSliderController;
+use App\Http\Controllers\AboutController;
 
 
 
@@ -26,6 +27,16 @@ Route::get('/etkinlikler', [EventsPageController::class, 'index'])->name('events
 Route::get('/etkinlik/{event:slug}', [EventsPageController::class, 'show'])->name('events.show');
 Route::get('/galeri', [GalleryController::class, 'index'])->name('galleries.index');
 Route::get('/galeri/{gallery:slug}', [GalleryController::class, 'show'])->name('galleries.show');
+
+// About Pages
+Route::get('/hakkımızda', [AboutController::class, 'index'])->name('about.index');
+Route::get('/hakkımızda/misyonumuz', [AboutController::class, 'mission'])->name('about.mission');
+Route::get('/hakkımızda/projelerimiz', [AboutController::class, 'projects'])->name('about.projects');
+Route::get('/hakkımızda/ekibimiz', [AboutController::class, 'team'])->name('about.team');
+Route::get('/hakkımızda/iletisim', [AboutController::class, 'contact'])->name('about.contact');
+Route::get('/hakkımızda/turkab-uyesi-kimdir', [AboutController::class, 'member'])->name('about.member');
+Route::get('/hakkımızda/temsilciliklerimiz', [AboutController::class, 'representatives'])->name('about.representatives');
+Route::get('/hakkımızda/neden-kurulduk', [AboutController::class, 'whyFounded'])->name('about.why-founded');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
