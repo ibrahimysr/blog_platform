@@ -13,6 +13,7 @@ use App\Http\Controllers\EventsPageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\Admin\HeroSliderController;
 
 
 
@@ -46,5 +47,6 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('galleries', [GalleryController::class, 'adminIndex'])->name('galleries.index');
         Route::resource('galleries', GalleryController::class)->except(['index']);
         Route::resource('users', UserController::class)->except(['show']);
+        Route::resource('hero-sliders', HeroSliderController::class);
     });
 });

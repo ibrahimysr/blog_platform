@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Event;
 use App\Models\Gallery;
+use App\Models\HeroSlider;
 use App\Models\Post;
 use App\Models\PostViewStat;
 use Illuminate\Support\Carbon;
@@ -16,6 +17,8 @@ class HomeController extends Controller
 {
     public function index(Request $request): View
     {
+        $heroSliders = HeroSlider::active()->ordered()->get();
+
         $featuredPosts = Post::with(['media', 'categories'])
             ->where('status', 1)
             ->where('is_featured', true)
@@ -87,6 +90,7 @@ class HomeController extends Controller
             ->get();
 
         return view('home.index', compact(
+            'heroSliders',
             'featuredPosts',
             'latestPosts',
             'popularPosts',

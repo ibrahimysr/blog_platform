@@ -11,95 +11,103 @@
 		$activeCatId = request('category');
 	@endphp
 
-	{{-- HERO SECTION --}}
-	<section class="relative -mt-8 mb-24 overflow-hidden">
-		<div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 opacity-60"></div>
-		<div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-		<div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-		<div class="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-		
-		<div class="relative container mx-auto px-4 pt-20 pb-24">
-			<div class="grid lg:grid-cols-2 gap-12 items-center">
-				{{-- Hero Content --}}
-				<div class="space-y-8 z-10">
-					@if($firstFeatured)
-						<div class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full text-white text-sm font-semibold shadow-lg backdrop-blur-sm">
-							<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-								<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-							</svg>
-							<span>{{ $firstFeatured->categories->first()->name ?? 'Öne Çıkan' }}</span>
-						</div>
-						
-						<h1 class="text-5xl lg:text-7xl font-black text-gray-900 leading-tight">
-							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
-								{{ Str::limit($firstFeatured->title, 60) }}
-							</span>
-						</h1>
-						
-						<p class="text-xl text-gray-600 leading-relaxed">
-							{{ $firstFeatured->excerpt ?? Str::limit(strip_tags($firstFeatured->content), 180) }}
-						</p>
-						
-						<div class="flex flex-wrap items-center gap-6">
-							<div class="flex items-center space-x-2 text-gray-600">
-								<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-								</svg>
-								<span class="text-sm font-medium">{{ $firstFeatured->published_at?->format('d M Y') }}</span>
+	{{-- HERO SLIDER SECTION --}}
+	@if($heroSliders->count() > 0)
+		<section class="relative -mt-8 mb-24 overflow-hidden">
+			<div class="hero-slider-container relative h-[600px] lg:h-[700px]">
+				@foreach($heroSliders as $index => $slider)
+					<div class="hero-slide {{ $index === 0 ? 'active' : '' }}" 
+						 style="background-image: url('{{ str_starts_with($slider->image, 'http') ? $slider->image : asset($slider->image) }}');">
+						<div class="relative z-10 container mx-auto px-4 h-full flex items-center">
+							<div class="max-w-4xl">
+								@if($slider->title)
+									<h1 class="text-4xl lg:text-6xl font-black text-white leading-tight mb-6 drop-shadow-lg">
+										{{ $slider->title }}
+									</h1>
+								@endif
+								
+								@if($slider->description)
+									<p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-8 drop-shadow-md">
+										{{ $slider->description }}
+									</p>
+								@endif
+								
+								@if($slider->button_text && $slider->button_url)
+									<a href="{{ $slider->button_url }}" 
+									   class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+										<span>{{ $slider->button_text }}</span>
+										<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+										</svg>
+									</a>
+								@endif
 							</div>
-							@if(isset($firstFeatured->reading_time))
-								<div class="flex items-center space-x-2 text-gray-600">
-									<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-									</svg>
-									<span class="text-sm font-medium">{{ $firstFeatured->reading_time }} dk okuma</span>
-								</div>
-							@endif
 						</div>
-						
-						<div class="flex flex-wrap gap-4">
-							<a href="{{ $routePostsShow ? route('posts.show', $firstFeatured->slug ?? $firstFeatured->id) : '#' }}" 
-							   class="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300">
-								Yazıyı Oku
-								<svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-								</svg>
-							</a>
-							<button class="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-200 hover:border-blue-500 hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-								<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
-								</svg>
-								Kaydet
-							</button>
-						</div>
-					@else
-						<h1 class="text-6xl lg:text-8xl font-black text-gray-900">
-							<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
-								Deta
-							</span><br>
-							<span class="text-gray-900">Dijital Demokrasi ve Toplum Araştırma Merkezi</span>
-						</h1>
-						<p class="text-2xl text-gray-600">
-							Dijital çağda demokrasi ve toplum araştırmalarına odaklanan, yenilikçi çözümler üreten araştırma merkezi.
-						</p>
-					@endif
-				</div>
-				
-				{{-- Hero Image --}}
-				<div class="relative group">
-					<div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 rounded-3xl blur-2xl opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-					<div class="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-						@if($hero)
-						<img src="{{ $hero->url }}" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-700" alt="{{ $firstFeatured->title ?? '' }}">
-						@else
-						<img src="{{ asset('asset/hero1.png') }}" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition duration-700" alt="Hero">
-						@endif
-						<div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
 					</div>
+				@endforeach
+				
+				{{-- Slider Controls --}}
+				@if($heroSliders->count() > 1)
+					<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+						<div class="flex space-x-3">
+							@foreach($heroSliders as $index => $slider)
+								<button class="slider-dot {{ $index === 0 ? 'active' : '' }}" 
+										data-slide="{{ $index }}"></button>
+							@endforeach
+						</div>
+					</div>
+					
+					<button class="slider-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+						</svg>
+					</button>
+					
+					<button class="slider-next absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full transition-all duration-300">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+						</svg>
+					</button>
+				@endif
+			</div>
+		</section>
+	@else
+		{{-- Fallback Hero Section --}}
+		<section class="relative -mt-8 mb-24 overflow-hidden">
+			<div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-blue-100 to-blue-200 opacity-60"></div>
+			<div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+			<div class="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+			<div class="absolute bottom-0 left-1/3 w-96 h-96 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+			
+			<div class="relative container mx-auto px-4 pt-20 pb-24">
+				<div class="text-center">
+					<div class="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full text-white text-sm font-semibold shadow-lg backdrop-blur-sm mb-8">
+						<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+							<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+						</svg>
+						<span>Deta</span>
+					</div>
+					
+					<h1 class="text-5xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
+						<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
+							Dijital Demokrasi ve Toplum Araştırma Merkezi
+						</span>
+					</h1>
+					
+					<p class="text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto mb-8">
+						Modern toplumun dijital dönüşümünü anlamak ve demokratik süreçleri güçlendirmek için araştırma ve analiz yapıyoruz.
+					</p>
+					
+					<a href="#latest-posts" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+						<span>Keşfet</span>
+						<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+						</svg>
+					</a>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	@endif
 
 	{{-- FEATURED ARTICLES --}}
 	@if($featuredPosts->count() > 1)

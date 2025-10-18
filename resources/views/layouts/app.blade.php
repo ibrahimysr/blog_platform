@@ -210,6 +210,48 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(24, 119, 242, 0.2);
         }
+        
+        /* Hero Slider Styles */
+        .hero-slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .hero-slide.active {
+            opacity: 1;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+        
+        .slider-dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -462,6 +504,82 @@
             document.addEventListener('click', function(){
                 if (!menu.classList.contains('hidden')) menu.classList.add('hidden');
             });
+        })();
+
+        // Hero Slider JavaScript
+        (function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.querySelector('.slider-prev');
+            const nextBtn = document.querySelector('.slider-next');
+            
+            if (slides.length === 0) return;
+            
+            let currentSlide = 0;
+            let slideInterval;
+            
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+            }
+            
+            function nextSlide() {
+                const next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+            
+            function prevSlide() {
+                const prev = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(prev);
+            }
+            
+            function startSlider() {
+                slideInterval = setInterval(nextSlide, 5000); // 5 saniyede bir değişir
+            }
+            
+            function stopSlider() {
+                clearInterval(slideInterval);
+            }
+            
+            // Event listeners
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopSlider();
+                    nextSlide();
+                    startSlider();
+                });
+            }
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopSlider();
+                    prevSlide();
+                    startSlider();
+                });
+            }
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    stopSlider();
+                    showSlide(index);
+                    startSlider();
+                });
+            });
+            
+            // Pause on hover
+            const sliderContainer = document.querySelector('.hero-slider-container');
+            if (sliderContainer) {
+                sliderContainer.addEventListener('mouseenter', stopSlider);
+                sliderContainer.addEventListener('mouseleave', startSlider);
+            }
+            
+            // Start slider
+            startSlider();
         })();
     </script>
 </body>
