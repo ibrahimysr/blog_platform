@@ -109,6 +109,66 @@
 		</section>
 	@endif
 
+	{{-- TÜRKAB KIMLIK BÖLÜMÜ --}}
+	<section class="container mx-auto px-4 mb-32">
+		<div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8 md:p-12">
+			{{-- TÜRKAB Logo Section --}}
+			<div class="text-center mb-12">
+				<div class="inline-flex items-center space-x-4 mb-6">
+					<div class="w-20 h-20 bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
+						<svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+							<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+						</svg>
+					</div>
+					<div class="text-left">
+						<h2 class="text-3xl font-black text-gray-900">TÜRKAB</h2>
+						<p class="text-lg text-gray-600 font-semibold">TÜRKİYE KARDEŞLİK BİRLİĞİ</p>
+					</div>
+				</div>
+			</div>
+
+			{{-- Slogan --}}
+			<div class="mb-12 p-8 bg-gradient-to-r from-blue-50 via-blue-100 to-blue-200 rounded-2xl border-l-4 border-blue-500">
+				<p class="text-3xl font-black text-blue-800 text-center">
+					"Yeni Neslin Kardeşlik Hareketi"
+				</p>
+			</div>
+
+			{{-- Kimlik Açıklaması --}}
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				<div>
+					<h3 class="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
+						<span class="w-1.5 h-8 bg-gradient-to-b from-blue-600 to-blue-700 rounded-full"></span>
+						Biz Kimiz?
+					</h3>
+					<p class="text-lg text-gray-700 leading-relaxed">
+						Bizler, milli ve manevi duygularla süslenmiş bir toplum ve gençlik inşa etmek, oluşan bu kardeşlik bilincini uluslararası düzeyde temsilini ve tesisini sağlamak hayaliyle yola çıkmış insanlarız.
+					</p>
+				</div>
+				
+				<div>
+					<h3 class="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
+						<span class="w-1.5 h-8 bg-gradient-to-b from-blue-600 to-blue-700 rounded-full"></span>
+						Hedefimiz
+					</h3>
+					<p class="text-lg text-gray-700 leading-relaxed">
+						Türkiye'nin 20 ilinde il ve ilçe temsilcilikleri bulunan, 6 yurt dışı temsilciliği bulunan, yaklaşık 10.000 gönüllü üyesi olan bir sivil toplum kuruluşuyuz.
+					</p>
+				</div>
+			</div>
+
+			{{-- CTA Buttons --}}
+			<div class="text-center mt-12">
+				<a href="{{ route('about.index') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+					<span>Hakkımızda</span>
+					<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+
 	{{-- FEATURED ARTICLES --}}
 	@if($featuredPosts->count() > 1)
 		<section class="container mx-auto px-4 mb-32">
@@ -334,6 +394,125 @@
 				@endif
 	</section>
 
+	{{-- TÜRKAB PROJELERİ --}}
+	<section class="container mx-auto px-4 mb-32">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+				<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
+					Projelerimiz
+				</span>
+			</h2>
+			<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+				Kardeşlik bilincini güçlendiren ve toplumsal dayanışmayı artıran projelerimiz
+			</p>
+		</div>
+		
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			{{-- Medeniyet Kardeşliği --}}
+			<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 group">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+						</svg>
+					</div>
+					<h3 class="text-xl font-black text-gray-900">Medeniyet Kardeşliği</h3>
+				</div>
+				<p class="text-gray-700">Farklı kültürler arasında köprü kuran, medeniyetler arası diyalogu güçlendiren projelerimiz.</p>
+			</div>
+
+			{{-- Kampüs Kardeşliği --}}
+			<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 group">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+						</svg>
+					</div>
+					<h3 class="text-xl font-black text-gray-900">Kampüs Kardeşliği</h3>
+				</div>
+				<p class="text-gray-700">Üniversite öğrencileri arasında kardeşlik bağlarını güçlendiren kampüs etkinlikleri.</p>
+			</div>
+
+			{{-- Fikir Mektebi --}}
+			<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 group">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+						</svg>
+					</div>
+					<h3 class="text-xl font-black text-gray-900">Fikir Mektebi</h3>
+				</div>
+				<p class="text-gray-700">Gençlerin düşünce dünyasını zenginleştiren, fikir üretimini teşvik eden eğitim programları.</p>
+			</div>
+
+			{{-- Lider Anne --}}
+			<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 group">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+						</svg>
+					</div>
+					<h3 class="text-xl font-black text-gray-900">Lider Anne</h3>
+				</div>
+				<p class="text-gray-700">Annelerin toplumsal liderlik rollerini güçlendiren, aile değerlerini destekleyen projeler.</p>
+			</div>
+
+			{{-- Kardeşlik Umresi --}}
+			<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 group">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+						</svg>
+					</div>
+					<h3 class="text-xl font-black text-gray-900">Kardeşlik Umresi</h3>
+				</div>
+				<p class="text-gray-700">Manevi değerleri güçlendiren, kardeşlik bağlarını pekiştiren umre organizasyonları.</p>
+			</div>
+
+			{{-- Kardeşlik Merkezi --}}
+			<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 group">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+						</svg>
+					</div>
+					<h3 class="text-xl font-black text-gray-900">Kardeşlik Merkezi</h3>
+				</div>
+				<p class="text-gray-700">Toplumsal dayanışmayı güçlendiren, sosyal yardımlaşmayı destekleyen merkezler.</p>
+			</div>
+		</div>
+
+		{{-- Ortadoğu Siyaset Okulu - Geniş Kart --}}
+		<div class="mt-6">
+			<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 border border-blue-200 hover:shadow-lg transition-all duration-300 group">
+				<div class="flex items-center gap-4 mb-4">
+					<div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+						<svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+						</svg>
+					</div>
+					<h3 class="text-2xl font-black text-gray-900">Ortadoğu Siyaset Okulu</h3>
+				</div>
+				<p class="text-lg text-gray-700">Bölgesel siyasi gelişmeleri analiz eden, genç liderler yetiştiren akademik programlar.</p>
+			</div>
+		</div>
+
+		{{-- CTA --}}
+		<div class="text-center mt-12">
+			<a href="{{ route('about.index') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+				<span>Tüm Projeleri Gör</span>
+				<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+				</svg>
+			</a>
+		</div>
+	</section>
+
     {{-- UPCOMING OR RECENT EVENTS --}}
     @if($upcomingEvents->count())
 		<section class="container mx-auto px-4 mb-32">
@@ -380,6 +559,126 @@
 		</section>
 	@endif
 
+	{{-- TÜRKAB TEMSİLCİLİK İSTATİSTİKLERİ --}}
+	<section class="container mx-auto px-4 mb-32">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+				<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
+					Temsilcilik Ağımız
+				</span>
+			</h2>
+			<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+				Türkiye'nin dört bir yanında ve yurt dışında faaliyet gösteren geniş temsilcilik ağımız
+			</p>
+		</div>
+		
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+			{{-- Yurt İçi Temsilcilikler --}}
+			<div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8">
+				<div class="text-center mb-8">
+					<div class="inline-flex items-center gap-3 mb-4">
+						<div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+							</svg>
+						</div>
+						<h3 class="text-3xl font-black text-gray-900">Yurt İçi Temsilciliklerimiz</h3>
+					</div>
+					<p class="text-gray-600">Türkiye'nin 20 farklı ilinde faaliyet gösteren temsilciliklerimiz</p>
+				</div>
+
+				<div class="grid grid-cols-2 gap-3">
+					@php
+					$domesticCities = [
+						'İstanbul', 'Ankara', 'İzmir', 'Mersin', 'Adana',
+						'Kahramanmaraş', 'Malatya', 'Adıyaman', 'Gaziantep', 'Şanlıurfa',
+						'Diyarbakır', 'Bingöl', 'Şırnak', 'Muş', 'Van',
+						'Giresun', 'Afyon', 'Isparta', 'Batman', 'Hatay'
+					];
+					@endphp
+					
+					@foreach($domesticCities as $index => $city)
+					<div class="flex items-center gap-3 p-3 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-105">
+						<div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-white font-bold text-sm">{{ $index + 1 }}</span>
+						</div>
+						<span class="text-gray-800 font-semibold text-sm">{{ $city }}</span>
+					</div>
+					@endforeach
+				</div>
+			</div>
+
+			{{-- Yurt Dışı Temsilcilikler --}}
+			<div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8">
+				<div class="text-center mb-8">
+					<div class="inline-flex items-center gap-3 mb-4">
+						<div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+							</svg>
+						</div>
+						<h3 class="text-3xl font-black text-gray-900">Yurt Dışı Temsilciliklerimiz</h3>
+					</div>
+					<p class="text-gray-600">6 farklı ülkede faaliyet gösteren temsilciliklerimiz</p>
+				</div>
+
+				<div class="space-y-3">
+					@php
+					$internationalCountries = [
+						'Suudi Arabistan', 'İran', 'Almanya', 'İngiltere', 'Filistin', 'Fransa'
+					];
+					@endphp
+					
+					@foreach($internationalCountries as $index => $country)
+					<div class="flex items-center gap-3 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all duration-300 hover:scale-105">
+						<div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-white font-bold">{{ $index + 1 }}</span>
+						</div>
+						<span class="text-gray-800 font-semibold text-lg">{{ $country }}</span>
+					</div>
+					@endforeach
+				</div>
+			</div>
+		</div>
+
+		{{-- İstatistik Kartları --}}
+		<div class="mt-12 bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8">
+			<div class="text-center mb-8">
+				<h3 class="text-2xl font-black text-gray-900 mb-4">Temsilcilik İstatistiklerimiz</h3>
+				<p class="text-gray-600">Geniş coğrafyada faaliyet gösteren temsilcilik ağımız</p>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+					<div class="text-4xl font-black text-blue-600 mb-2">20</div>
+					<p class="text-gray-700 font-semibold">Yurt İçi Temsilcilik</p>
+					<p class="text-sm text-gray-500 mt-1">Türkiye genelinde</p>
+				</div>
+				<div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+					<div class="text-4xl font-black text-blue-600 mb-2">6</div>
+					<p class="text-gray-700 font-semibold">Yurt Dışı Temsilcilik</p>
+					<p class="text-sm text-gray-500 mt-1">Uluslararası</p>
+				</div>
+				<div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl">
+					<div class="text-4xl font-black text-blue-600 mb-2">26</div>
+					<p class="text-gray-700 font-semibold">Toplam Temsilcilik</p>
+					<p class="text-sm text-gray-500 mt-1">Geniş ağ</p>
+				</div>
+			</div>
+		</div>
+
+		{{-- CTA --}}
+		<div class="text-center mt-12">
+			<a href="{{ route('about.representatives') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+				<span>Temsilciliklerimizi Keşfet</span>
+				<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+				</svg>
+			</a>
+		</div>
+	</section>
+
 	{{-- FEATURED GALLERY SECTION --}}
 	@if($featuredGalleries->isNotEmpty())
 		<section class="container mx-auto px-4 mb-20">
@@ -424,6 +723,159 @@
 			</div>
 		</section>
 	@endif
+
+	{{-- TÜRKAB MİSYON & VİZYON --}}
+	<section class="container mx-auto px-4 mb-32">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-6">
+				<span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800">
+					Misyonumuz & Vizyonumuz
+				</span>
+			</h2>
+			<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+				TÜRKAB'ın temel değerleri ve gelecek hedefleri
+			</p>
+		</div>
+		
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+			{{-- Misyon --}}
+			<div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8">
+				<div class="text-center mb-8">
+					<div class="inline-flex items-center gap-3 mb-4">
+						<div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+							</svg>
+						</div>
+						<h3 class="text-3xl font-black text-gray-900">Misyonumuz</h3>
+					</div>
+				</div>
+				
+				<div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200">
+					<p class="text-lg text-gray-700 leading-relaxed">
+						<strong class="text-blue-700 font-bold">Dinini, Tarihini, Kültürünü, Değerlerini ve En Önemlisi Kardeşlik Bilincini ve Hukukunu Bilen</strong>, <strong class="text-blue-700 font-bold">Çağın Gerektirdiği Bilgi ve Görgüyü Edinmiş</strong>, <strong class="text-blue-700 font-bold">Teknolojiyi Üst Düzeyde Kullanabilen</strong>, <strong class="text-blue-700 font-bold">Özgüveni Yüksek, İletişime Açık, Kendisini Güncelleyebilen, Okuyan, Araştıran, Kendisine Sürekli Daha İleri Hedefler Belirleyen</strong>, <strong class="text-blue-700 font-bold">Doğuyu da Batıyı da Tanıyan, Görevini Layıkıyla Yerine Getirebilecek Donanıma Sahip</strong> ve <strong class="text-blue-700 font-bold">İyiliği Emreden Kötülükten Sakındıran, Çevresine Örnek, Ahlaklı, Şuurlu ve Vatansever Nesiller Yetiştirmek</strong>.
+					</p>
+				</div>
+			</div>
+
+			{{-- Vizyon --}}
+			<div class="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8">
+				<div class="text-center mb-8">
+					<div class="inline-flex items-center gap-3 mb-4">
+						<div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center">
+							<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+							</svg>
+						</div>
+						<h3 class="text-3xl font-black text-gray-900">Vizyonumuz</h3>
+					</div>
+				</div>
+				
+				<div class="space-y-4">
+					<div class="flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all duration-300">
+						<div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-white font-bold text-sm">1</span>
+						</div>
+						<div>
+							<h4 class="text-lg font-black text-gray-900">Ülkemize Öncü</h4>
+							<p class="text-gray-700 text-sm">Türkiye'de öncü ve lider bir sivil toplum kuruluşu olmak</p>
+						</div>
+					</div>
+					
+					<div class="flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all duration-300">
+						<div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-white font-bold text-sm">2</span>
+						</div>
+						<div>
+							<h4 class="text-lg font-black text-gray-900">Dünyaya Örnek</h4>
+							<p class="text-gray-700 text-sm">Dünyaya örnek teşkil eden bir model oluşturmak</p>
+						</div>
+					</div>
+					
+					<div class="flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all duration-300">
+						<div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-white font-bold text-sm">3</span>
+						</div>
+						<div>
+							<h4 class="text-lg font-black text-gray-900">Donanımlı Nesiller</h4>
+							<p class="text-gray-700 text-sm">Donanımlı ve inançlı nesiller yetiştirmek</p>
+						</div>
+					</div>
+					
+					<div class="flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl hover:shadow-md transition-all duration-300">
+						<div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+							<span class="text-white font-bold text-sm">4</span>
+						</div>
+						<div>
+							<h4 class="text-lg font-black text-gray-900">İdeal Toplum</h4>
+							<p class="text-gray-700 text-sm">Kardeşlik bilinci ile ideal bir toplum oluşturmak</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{{-- Ahlak Değerleri --}}
+		<div class="mt-12 bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden border border-white/20 p-8">
+			<div class="text-center mb-8">
+				<h3 class="text-2xl font-black text-gray-900 mb-4">TÜRKAB Ahlakı</h3>
+				<p class="text-gray-600">"Bir Türkab mensubu, çevresinde yürüyen ahlak olarak anılmalıdır."</p>
+			</div>
+			
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+				<div class="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+					<div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+						</svg>
+					</div>
+					<h4 class="font-black text-gray-900 mb-2">Hakikat Ahlakı</h4>
+					<p class="text-sm text-gray-700">Hakikatten süzülen ahlak</p>
+				</div>
+				
+				<div class="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+					<div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+						</svg>
+					</div>
+					<h4 class="font-black text-gray-900 mb-2">Kul Hakkı</h4>
+					<p class="text-sm text-gray-700">Kul hakkını önceleyen ahlak</p>
+				</div>
+				
+				<div class="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+					<div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+						</svg>
+					</div>
+					<h4 class="font-black text-gray-900 mb-2">İman Ahlakı</h4>
+					<p class="text-sm text-gray-700">İmanı en güzel cila ile parlatan ahlak</p>
+				</div>
+				
+				<div class="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
+					<div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+						<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+						</svg>
+					</div>
+					<h4 class="font-black text-gray-900 mb-2">Eğitim Ahlakı</h4>
+					<p class="text-sm text-gray-700">Muamelatı çepeçevre kuşatan ahlak</p>
+				</div>
+			</div>
+		</div>
+
+		{{-- CTA --}}
+		<div class="text-center mt-12">
+			<a href="{{ route('about.why-founded') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+				<span>Detaylı Bilgi Al</span>
+				<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+				</svg>
+			</a>
+		</div>
+	</section>
 
 	{{-- RECENT COMMENTS --}}
 	@if($recentComments->count())
@@ -472,23 +924,46 @@
 			<div class="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full -ml-48 -mt-48"></div>
 			<div class="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mb-48"></div>
 			
-			<div class="relative z-10 text-center max-w-3xl mx-auto">
+			<div class="relative z-10 text-center max-w-4xl mx-auto">
+				<div class="inline-flex items-center gap-2 px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-bold shadow-lg mb-8">
+					<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+						<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+					</svg>
+					<span>TÜRKAB</span>
+				</div>
+				
 				<h2 class="text-4xl lg:text-6xl font-black text-white mb-6">
-					İlham Verici İçerikler<br>Seni Bekliyor
+					Kardeşlik Hareketine<br>Katıl, Fark Yarat!
 				</h2>
 				<p class="text-xl text-blue-100 mb-10 leading-relaxed">
-					Her gün yeni makaleler, rehberler ve uzman görüşleriyle büyümeye devam et. Topluluğumuza katıl ve fark yarat!
+					Milli ve manevi değerlerle donanmış, kardeşlik bilincini yayan bir toplum inşa etme yolculuğunda bizimle birlikte yürü. Yeni neslin kardeşlik hareketinin bir parçası ol!
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
-					<a href="#" class="inline-flex items-center px-10 py-5 bg-white text-gray-900 font-black rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg">
-						<span>Hemen Başla</span>
+					<a href="{{ route('about.member') }}" class="inline-flex items-center px-10 py-5 bg-white text-blue-700 font-black rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg">
+						<span>Hemen Üye Ol</span>
 						<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
 						</svg>
 					</a>
-					<a href="#" class="inline-flex items-center px-10 py-5 bg-white/10 backdrop-blur-md text-white font-black rounded-full border-2 border-white/30 hover:bg-white/20 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg">
-						<span>Daha Fazla Keşfet</span>
+					<a href="{{ route('about.index') }}" class="inline-flex items-center px-10 py-5 bg-white/10 backdrop-blur-md text-white font-black rounded-full border-2 border-white/30 hover:bg-white/20 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg">
+						<span>Hakkımızda Keşfet</span>
 					</a>
+				</div>
+				
+				{{-- İstatistikler --}}
+				<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+					<div class="text-center">
+						<div class="text-3xl font-black text-white mb-2">10.000+</div>
+						<p class="text-blue-200 font-semibold">Gönüllü Üye</p>
+					</div>
+					<div class="text-center">
+						<div class="text-3xl font-black text-white mb-2">26</div>
+						<p class="text-blue-200 font-semibold">Temsilcilik</p>
+					</div>
+					<div class="text-center">
+						<div class="text-3xl font-black text-white mb-2">7</div>
+						<p class="text-blue-200 font-semibold">Ana Proje</p>
+					</div>
 				</div>
 			</div>
 		</div>
