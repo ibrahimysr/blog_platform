@@ -121,8 +121,8 @@
 						</svg>
 					</div>
 					<div class="text-left">
-						<h2 class="text-3xl font-black text-gray-900">TÜRKAB</h2>
-						<p class="text-lg text-gray-600 font-semibold">TÜRKİYE KARDEŞLİK BİRLİĞİ</p>
+						<h2 class="text-3xl font-black text-gray-900">Deta</h2>
+						<p class="text-lg text-gray-600 font-semibold">Dijital Demokrasi ve Toplum Araştırma Merkezi</p>
 					</div>
 				</div>
 			</div>
