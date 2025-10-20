@@ -1,66 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Blog Platform (Laravel 10)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Bu depoda Laravel tabanlı bir blog ve içerik platformu bulunmaktadır. Yazılar, kategoriler, yorumlar, reaksiyonlar, etkinlikler, galeri ve ana sayfa kahraman görselleri (hero slider) yönetimi içerir. Admin paneli ile içerikler yönetilebilir.
 
-## About Laravel
+### Teknolojiler ve Gereksinimler
+- PHP: ^8.1
+- Laravel: ^10.x (`laravel/framework` ^10.10)
+- Node.js: (opsiyonel, Vite ^5 ile derleme)
+- Veritabanı: MySQL/MariaDB (veya Laravel'in desteklediği herhangi bir sürücü)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Kurulum
+1) Depoyu klonlayın ve bağımlılıkları yükleyin:
+```bash
+composer install
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2) Ortam dosyasını oluşturun ve uygulama anahtarını üretin:
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3) .env ayarları:
+- `APP_URL` değerini kendi URL'inize göre güncelleyin
+- Veritabanı bağlantısını (`DB_*`) yapılandırın
 
-## Learning Laravel
+4) Veritabanı tablolarını oluşturun ve örnek verilerle doldurun:
+```bash
+php artisan migrate --seed
+```
+Seeder, bir admin kullanıcısı oluşturur ve admin rolünü atar:
+- E-posta: `admin@example.com`
+- Şifre: `password`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+5) Uygulamayı başlatın:
+```bash
+php artisan serve
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Varlıklar (Assets) ve Stil
+- Proje, Blade şablonlarında TailwindCSS'i CDN ile kullanır.
+- `vite` ve `laravel-vite-plugin` tanımlıdır; özel JS/CSS derlemek istiyorsanız `npm i` ve `npm run dev/build` kullanabilirsiniz (opsiyoneldir).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Dosya Yüklemeleri ve Depolama
+Galeri ve Hero Slider görselleri, doğrudan `public/` altında saklanır:
+- `public/gallery_images`
+- `public/gallery_thumbnails`
+- `public/hero_slider_images`
 
-## Laravel Sponsors
+Bu klasörlerin mevcut olduğundan ve web sunucusunun yazma izni bulunduğundan emin olun. Uygulama yoksa gerekli klasörleri kendisi oluşturur. Storage link ihtiyacı yoktur (dosyalar doğrudan `public/` altında tutulur), ancak genel kullanım için şu komut faydalıdır:
+```bash
+php artisan storage:link
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Giriş, Kayıt ve Yönetim Paneli
+- Giriş: `/login`
+- Kayıt: `/register`
+- Çıkış: POST `/logout`
+- Profil: `/profil`
+- Admin Paneli: `/admin`
+  - Yetkilendirme: `auth` + `admin` middleware (kullanıcıya `admin` rolü atanmış olmalı)
 
-### Premium Partners
+### Öne Çıkan Özellikler
+- Yazılar: kategoriler, medya, öne çıkarma, okunma süresi, görüntülenme sayaçları
+- Yorumlar: kayıtlı kullanıcılar yorum bırakabilir
+- Reaksiyonlar: beğeni/beğenmeme
+- Etkinlikler: yaklaşan/geçmiş etkinlik listeleri
+- Galeri: URL veya dosya yükleme, küçük görseller (thumbnail), sıralama, öne çıkarma
+- Hero Slider: URL veya dosya yükleme, aktiflik, sıralama; ana sayfada slider
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Başlıca Rotalar
+Kamuya açık:
+- `/` ana sayfa
+- `/yazilar` yazı listesi (arama/sıralama/kategori filtreleri)
+- `/yazilar/{post:slug}` yazı detayı (yorum/reaksiyon işlemleri)
+- `/etkinlikler`, `/etkinlik/{event:slug}`
+- `/galeri`, `/galeri/{gallery:slug}`
+- Hakkımızda sayfaları: `/hakkımızda`, `/hakkımızda/misyonumuz`, `/hakkımızda/projelerimiz`, `/hakkımızda/ekibimiz`, `/hakkımızda/iletisim`, `/hakkımızda/turkab-uyesi-kimdir`, `/hakkımızda/temsilciliklerimiz`, `/hakkımızda/neden-kurulduk`
 
-## Contributing
+Yönetim (admin):
+- `/admin` gösterge paneli
+- `/admin/posts` (CRUD)
+- `/admin/categories` (CRUD)
+- `/admin/events` (CRUD)
+- `/admin/galleries` (liste + CRUD)
+- `/admin/users` (CRUD)
+- `/admin/hero-sliders` (CRUD)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Veritabanı ve Modeller
+- Çekirdek modeller: `Post`, `Category`, `Comment`, `Reaction`, `Event`, `Gallery`, `HeroSlider`, `PostMedia`, `PostViewLog`, `PostViewStat`, `Role`, `User`
+- Migrasyonlar `database/migrations` altında; `--seed` ile kategoriler ve admin kullanıcısı oluşturulur.
 
-## Code of Conduct
+### Geliştirme Notları
+- Admin erişimi için seeder'daki kullanıcıyla giriş yapın veya kendi kullanıcınıza `admin` rolünü atayın.
+- Görsel yükleme klasörleri yazılabilir olmalıdır.
+- Tailwind CDN kullanıldığı için ekstra derleme gerekmeyebilir; özel stil/JS için Vite kullanılabilir.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Testler
+PHPUnit yapılandırması `phpunit.xml` içerisinde. Örnek testler `tests/` klasöründe bulunur.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Lisans
+MIT
