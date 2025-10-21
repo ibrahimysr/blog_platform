@@ -16,8 +16,15 @@
 		<section class="relative -mt-8 mb-24 overflow-hidden">
 			<div class="hero-slider-container relative h-[600px] lg:h-[700px]">
 				@foreach($heroSliders as $index => $slider)
-					<div class="hero-slide {{ $index === 0 ? 'active' : '' }}" 
-						 style="background-image: url('{{ str_starts_with($slider->image, 'http') ? $slider->image : asset($slider->image) }}');">
+					@if($slider->button_url)
+						<a href="{{ $slider->button_url }}" class="hero-slide {{ $index === 0 ? 'active' : '' }}" 
+						   data-desktop="{{ str_starts_with($slider->image, 'http') ? $slider->image : asset($slider->image) }}"
+						   data-mobile="{{ $slider->mobile_image ? (str_starts_with($slider->mobile_image, 'http') ? $slider->mobile_image : asset($slider->mobile_image)) : (str_starts_with($slider->image, 'http') ? $slider->image : asset($slider->image)) }}">
+					@else
+						<div class="hero-slide {{ $index === 0 ? 'active' : '' }}" 
+							 data-desktop="{{ str_starts_with($slider->image, 'http') ? $slider->image : asset($slider->image) }}"
+							 data-mobile="{{ $slider->mobile_image ? (str_starts_with($slider->mobile_image, 'http') ? $slider->mobile_image : asset($slider->mobile_image)) : (str_starts_with($slider->image, 'http') ? $slider->image : asset($slider->image)) }}">
+					@endif
 						<div class="relative z-10 container mx-auto px-4 h-full flex items-center">
 							<div class="max-w-4xl">
 								@if($slider->title)
@@ -32,18 +39,14 @@
 									</p>
 								@endif
 								
-								@if($slider->button_text && $slider->button_url)
-									<a href="{{ $slider->button_url }}" 
-									   class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-										<span>{{ $slider->button_text }}</span>
-										<svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-										</svg>
-									</a>
-								@endif
+								{{-- Buton artık gözükmüyor, tüm resim tıklanabilir --}}
 							</div>
 						</div>
-					</div>
+					@if($slider->button_url)
+						</a>
+					@else
+						</div>
+					@endif
 				@endforeach
 				
 				{{-- Slider Controls --}}

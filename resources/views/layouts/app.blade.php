@@ -229,10 +229,19 @@
             background-repeat: no-repeat;
             opacity: 0;
             transition: opacity 1s ease-in-out;
+            background-image: var(--desktop-bg);
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
         }
         
         .hero-slide.active {
             opacity: 1;
+        }
+        
+        .hero-slide:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease-in-out;
         }
         
         .slider-dot {
@@ -252,6 +261,13 @@
         
         .slider-dot:hover {
             background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Mobile responsive background images */
+        @media (max-width: 768px) {
+            .hero-slide {
+                background-image: var(--mobile-bg);
+            }
         }
     </style>
 </head>
@@ -573,6 +589,19 @@
             const nextBtn = document.querySelector('.slider-next');
             
             if (slides.length === 0) return;
+            
+            // Set CSS variables for responsive background images
+            slides.forEach(slide => {
+                const desktopImg = slide.dataset.desktop;
+                const mobileImg = slide.dataset.mobile;
+                
+                if (desktopImg) {
+                    slide.style.setProperty('--desktop-bg', `url('${desktopImg}')`);
+                }
+                if (mobileImg) {
+                    slide.style.setProperty('--mobile-bg', `url('${mobileImg}')`);
+                }
+            });
             
             let currentSlide = 0;
             let slideInterval;

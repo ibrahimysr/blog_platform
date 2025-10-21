@@ -124,8 +124,9 @@
 
 				<!-- Image Upload -->
 				<div class="space-y-6">
+					<!-- Desktop Image -->
 					<div>
-						<label class="block text-sm font-medium text-gray-700 mb-3">Resim <span class="text-gray-400">(Yeni resim seçmek için)</span></label>
+						<label class="block text-sm font-medium text-gray-700 mb-3">Desktop Resmi <span class="text-gray-400">(Yeni resim seçmek için)</span></label>
 						
 						<!-- Image Type Selection -->
 						<div class="flex space-x-4 mb-4">
@@ -198,9 +199,90 @@
 					@endif
 
 					<div id="image-preview" class="hidden">
-						<label class="block text-sm font-medium text-gray-700 mb-2">Yeni Resim Önizleme</label>
+						<label class="block text-sm font-medium text-gray-700 mb-2">Yeni Desktop Resim Önizleme</label>
 						<div class="border-2 border-dashed border-gray-300 rounded-lg p-4">
-							<img id="preview-img" src="" alt="Önizleme" class="w-full h-48 object-cover rounded-lg">
+							<img id="preview-img" src="" alt="Desktop Önizleme" class="w-full h-48 object-cover rounded-lg">
+						</div>
+					</div>
+
+					<!-- Mobile Image -->
+					<div>
+						<label class="block text-sm font-medium text-gray-700 mb-3">Mobile Resmi <span class="text-gray-400">(Yeni resim seçmek için)</span></label>
+						
+						<!-- Mobile Image Type Selection -->
+						<div class="flex space-x-4 mb-4">
+							<label class="flex items-center">
+								<input type="radio" 
+									   name="mobile_image_type" 
+									   value="upload" 
+									   {{ old('mobile_image_type', str_starts_with($heroSlider->mobile_image ?? '', 'http') ? 'url' : 'upload') === 'upload' ? 'checked' : '' }}
+									   onchange="toggleMobileImageType()"
+									   class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+								<span class="ml-2 text-sm text-gray-700">Dosya Yükle</span>
+							</label>
+							<label class="flex items-center">
+								<input type="radio" 
+									   name="mobile_image_type" 
+									   value="url" 
+									   {{ old('mobile_image_type', str_starts_with($heroSlider->mobile_image ?? '', 'http') ? 'url' : 'upload') === 'url' ? 'checked' : '' }}
+									   onchange="toggleMobileImageType()"
+									   class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+								<span class="ml-2 text-sm text-gray-700">URL Kullan</span>
+							</label>
+						</div>
+
+						<!-- Mobile File Upload -->
+						<div id="mobile-file-upload-section" class="space-y-3">
+							<input type="file" 
+								   id="mobile_image_file" 
+								   name="mobile_image_file" 
+								   accept="image/*"
+								   onchange="previewMobileImage(this)"
+								   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('mobile_image_file') border-red-500 @enderror">
+							@error('mobile_image_file')
+								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+							@enderror
+							<p class="text-xs text-gray-500">
+								Desteklenen formatlar: JPEG, PNG, JPG, GIF. Maksimum boyut: 10MB
+							</p>
+						</div>
+
+						<!-- Mobile URL Input -->
+						<div id="mobile-url-input-section" class="space-y-3">
+							<input type="url" 
+								   id="mobile_image_url" 
+								   name="mobile_image_url" 
+								   value="{{ old('mobile_image_url', str_starts_with($heroSlider->mobile_image ?? '', 'http') ? $heroSlider->mobile_image : '') }}"
+								   placeholder="https://example.com/mobile-image.jpg"
+								   onchange="previewMobileImageUrl(this)"
+								   class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 @error('mobile_image_url') border-red-500 @enderror">
+							@error('mobile_image_url')
+								<p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+							@enderror
+						</div>
+					</div>
+
+					@if($heroSlider->mobile_image)
+						<div>
+							<label class="block text-sm font-medium text-gray-700 mb-2">Mevcut Mobile Resim</label>
+							<div class="border-2 border-dashed border-gray-300 rounded-lg p-4">
+								@if(str_starts_with($heroSlider->mobile_image, 'http'))
+									<img src="{{ $heroSlider->mobile_image }}" 
+										 alt="{{ $heroSlider->title }} Mobile" 
+										 class="w-full h-48 object-cover rounded-lg">
+								@else
+									<img src="{{ asset($heroSlider->mobile_image) }}" 
+										 alt="{{ $heroSlider->title }} Mobile" 
+										 class="w-full h-48 object-cover rounded-lg">
+								@endif
+							</div>
+						</div>
+					@endif
+
+					<div id="mobile-image-preview" class="hidden">
+						<label class="block text-sm font-medium text-gray-700 mb-2">Yeni Mobile Resim Önizleme</label>
+						<div class="border-2 border-dashed border-gray-300 rounded-lg p-4">
+							<img id="mobile-preview-img" src="" alt="Mobile Önizleme" class="w-full h-48 object-cover rounded-lg">
 						</div>
 					</div>
 				</div>
@@ -235,6 +317,20 @@
 		}
 	}
 
+	function toggleMobileImageType() {
+		const fileSection = document.getElementById('mobile-file-upload-section');
+		const urlSection = document.getElementById('mobile-url-input-section');
+		const uploadRadio = document.querySelector('input[name="mobile_image_type"][value="upload"]');
+		
+		if (uploadRadio.checked) {
+			fileSection.style.display = 'block';
+			urlSection.style.display = 'none';
+		} else {
+			fileSection.style.display = 'none';
+			urlSection.style.display = 'block';
+		}
+	}
+
 	function previewImage(input) {
 		if (input.files && input.files[0]) {
 			const reader = new FileReader();
@@ -255,9 +351,30 @@
 		}
 	}
 
+	function previewMobileImage(input) {
+		if (input.files && input.files[0]) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				document.getElementById('mobile-preview-img').src = e.target.result;
+				document.getElementById('mobile-image-preview').classList.remove('hidden');
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	function previewMobileImageUrl(input) {
+		if (input.value) {
+			document.getElementById('mobile-preview-img').src = input.value;
+			document.getElementById('mobile-image-preview').classList.remove('hidden');
+		} else {
+			document.getElementById('mobile-image-preview').classList.add('hidden');
+		}
+	}
+
 	// Initialize on page load
 	document.addEventListener('DOMContentLoaded', function() {
 		toggleImageType();
+		toggleMobileImageType();
 	});
 	</script>
 @endsection

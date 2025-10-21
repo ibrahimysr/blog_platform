@@ -31,7 +31,7 @@
 					{{-- Featured Image with Overlay --}}
 					@php $featuredImage = $post->media->firstWhere('is_primary', true) ?: $post->media->first(); @endphp
 					@if($featuredImage)
-						<div class="relative h-[400px] overflow-hidden group">
+						<div class="relative h-[500px] lg:h-[600px] overflow-hidden group">
 							<img src="{{ $featuredImage->url }}" 
 							     alt="{{ $featuredImage->alt ?? $post->title }}" 
 							     class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
