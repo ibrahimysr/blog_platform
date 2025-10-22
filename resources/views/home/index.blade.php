@@ -14,7 +14,7 @@
 	{{-- HERO SLIDER SECTION --}}
 	@if($heroSliders->count() > 0)
 		<section class="relative -mt-8 mb-24 overflow-hidden">
-			<div class="hero-slider-container relative h-[600px] lg:h-[700px]">
+			<div class="hero-slider-container relative h-[700px] lg:h-[850px]">
 				@foreach($heroSliders as $index => $slider)
 					@if($slider->button_url)
 						<a href="{{ $slider->button_url }}" class="hero-slide {{ $index === 0 ? 'active' : '' }}" 
