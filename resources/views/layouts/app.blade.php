@@ -10,8 +10,20 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
+        @font-face {
+            font-family: 'Glaser Stencil';
+            src: url('{{ asset("fonts/glaser-stencil.ttf") }}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
         * {
             font-family: 'Inter', sans-serif;
+        }
+        
+        .glaser-font {
+            font-family: 'Glaser Stencil', sans-serif;
+            letter-spacing: 0.1em;
         }
         
         body {
@@ -282,7 +294,7 @@
                         <img src="{{ asset('asset/logo.jpeg') }}" alt="TÜRKAB Logo" class="w-full h-full object-cover">
                     </div>
                     <div class="flex flex-col">
-                        <span class="text-2xl font-black gradient-text tracking-tight">DETA</span>
+                        <span class="text-2xl font-black text-black glaser-font">DETA</span>
                         <span class="text-xs font-semibold text-gray-600 hidden lg:block leading-tight">Dijital Demokrasi Toplum ve Araştırma Merkezi</span>
                     </div>
                 </a>
@@ -476,7 +488,7 @@
                             <img src="{{ asset('asset/logo.jpeg') }}" alt="TÜRKAB Logo" class="w-full h-full object-cover">
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-2xl font-black text-white">Deta</span>
+                            <span class="text-2xl font-black text-white glaser-font">Deta</span>
                             <span class="text-xs font-semibold text-gray-300 hidden lg:block leading-tight">Dijital Demokrasi Toplum ve Araştırma Merkezi</span>
                         </div>
                     </div>
