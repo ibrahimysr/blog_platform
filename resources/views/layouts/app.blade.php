@@ -281,7 +281,10 @@
                     <div class="w-12 h-12 rounded-2xl overflow-hidden transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                         <img src="{{ asset('asset/logo.jpeg') }}" alt="TÜRKAB Logo" class="w-full h-full object-cover">
                     </div>
-                    <span class="text-2xl font-black gradient-text tracking-tight">DETA</span>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black gradient-text tracking-tight">DETA</span>
+                        <span class="text-xs font-semibold text-gray-600 hidden lg:block leading-tight">Dijital Demokrasi Toplum ve Araştırma Merkezi</span>
+                    </div>
                 </a>
 
                 <!-- Desktop Navigation -->
@@ -472,7 +475,10 @@
                         <div class="w-12 h-12 rounded-2xl overflow-hidden">
                             <img src="{{ asset('asset/logo.jpeg') }}" alt="TÜRKAB Logo" class="w-full h-full object-cover">
                         </div>
-                        <span class="text-2xl font-black text-white">Deta</span>
+                        <div class="flex flex-col">
+                            <span class="text-2xl font-black text-white">Deta</span>
+                            <span class="text-xs font-semibold text-gray-300 hidden lg:block leading-tight">Dijital Demokrasi Toplum ve Araştırma Merkezi</span>
+                        </div>
                     </div>
                     <p class="text-gray-300 mb-6 leading-relaxed text-lg">TÜRKAB'ın resmi blog platformu. Kardeşlik bilincini yayan, milli ve manevi değerleri paylaşan içeriklerle topluluğumuzla bağlantı kurun.</p>
                     <div class="flex space-x-5">
