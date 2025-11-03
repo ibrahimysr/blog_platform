@@ -40,7 +40,7 @@ class CategoryController extends Controller
     public function edit(Category $category): View
     {
         $parents = Category::where('id', '!=', $category->id)->orderBy('name')->get();
-        return view('admin.categories.edit', compact('category','parents'));
+        return view('admin.categories.edit', compact('category', 'parents'));
     }
 
     public function update(Request $request, Category $category): RedirectResponse
@@ -63,8 +63,10 @@ class CategoryController extends Controller
         $base = Str::slug($name);
         $slug = $base;
         $i = 1;
-        while (Category::when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
-            ->where('slug', $slug)->exists()) {
+        while (
+            Category::when($ignoreId, fn($q) => $q->where('id', '!=', $ignoreId))
+                ->where('slug', $slug)->exists()
+        ) {
             $slug = $base . '-' . $i;
             $i++;
         }
